@@ -137,7 +137,6 @@ class _OnboardingScreen1State extends State<OnboardingScreen1> {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Container(
-        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(16),
