@@ -7,46 +7,69 @@ class BarcodeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black, // Entire screen black
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,// Same color as the background
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white), // Back button icon
-          onPressed: () {
-            Navigator.pop(context); // Navigate back to the previous screen
-          },
-        ), // Center the title
-      ),
-      body: Center(
+      body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center, // Center the column vertically
-          crossAxisAlignment: CrossAxisAlignment.center, // Center the column horizontally
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Padding(
-              padding: EdgeInsets.only(bottom: 20.0), // Spacing below the text
-              child: Text(
-                'Scan the QR code',
-                style: TextStyle(
-                  color: Colors.white, // White text
-                  fontSize: 28, // Larger font size
-                  fontWeight: FontWeight.bold, // Bold for emphasis
+            // Back button at the top
+            Padding(
+              padding: const EdgeInsets.only(top: 16.0, left: 8.0),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: IconButton(
+                  icon: const Icon(Icons.arrow_back, color: Colors.white), // Back button icon
+                  onPressed: () {
+                    Navigator.pop(context); // Navigate back to the previous screen
+                  },
                 ),
-                textAlign: TextAlign.center, // Center align the text
               ),
             ),
-            Container(
-              width: 250, // Width of the box
-              height: 250, // Height of the box
-              decoration: BoxDecoration(
-                color: Colors.white, // White box
-                borderRadius: BorderRadius.circular(16), // Rounded corners for the box
+            const SizedBox(height: 50), // Spacing between the back button and the content
+            const Text(
+              'Scan the QR code',
+              style: TextStyle(
+                color: Colors.white, // White text
+                fontSize: 28, // Larger font size
+                fontWeight: FontWeight.bold, // Bold for emphasis
               ),
-              child: Center(
-                child: Icon(
-                  Icons.qr_code, // QR code icon as a placeholder
-                  size: 200, // Size of the QR code icon
-                  color: Colors.grey[400], // Light grey color for the QR code icon
-                ),
+              textAlign: TextAlign.center, // Center align the text
+            ),
+            const SizedBox(height: 40), // Spacing between the text and the QR code
+            Center(
+              child: Stack(
+                alignment: Alignment.center, // Align children in the center
+                children: [
+                  Container(
+                    width: 250, // Width of the box
+                    height: 250, // Height of the box
+                    decoration: BoxDecoration(
+                      color: Colors.white, // White box
+                      borderRadius: BorderRadius.circular(16), // Rounded corners for the box
+                    ),
+                    child: Center(
+                      child: Icon(
+                        Icons.qr_code, // QR code icon as a placeholder
+                        size: 200, // Size of the QR code icon
+                        color: Colors.black, // Black color for the QR code icon
+                      ),
+                    ),
+                  ),
+                  // White fitted box behind the logo
+                  Container(
+                    width: 60, // Adjust the size as needed
+                    height: 60, // Adjust the size as needed
+                    decoration: BoxDecoration(
+                      color: Colors.white, // White background for the logo
+                      borderRadius: BorderRadius.circular(16), // Rounded corners for the box
+                    ),
+                    child: Center(
+                      child: Image.asset(
+                        'assets/images/onlylogo.png',
+                        fit: BoxFit.contain, // Scale the image to fit within the box
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

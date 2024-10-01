@@ -57,7 +57,13 @@ class _EnterPasswordScreenState extends State<EnterPasswordScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset('assets/images/onlylogo.png'),
+            // Conditionally load the logo based on dark or light mode
+            Image.asset(
+              isDarkMode
+                  ? 'assets/images/logo_white.png' // Dark mode logo
+                  : 'assets/images/onlylogo.png',  // Light mode logo
+              width: 80, // Set an appropriate width for the logo
+            ),
             const SizedBox(height: 20),
             Text(
               'And Your Password',
@@ -148,7 +154,10 @@ class _EnterPasswordScreenState extends State<EnterPasswordScreen> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                child: const Text('Login', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                child: const Text(
+                  'Login',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
               ),
             ),
             const SizedBox(height: 16),

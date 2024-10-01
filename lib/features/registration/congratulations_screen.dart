@@ -32,7 +32,7 @@ class CongratulationsScreen extends StatelessWidget {
                   CircleAvatar(
                     radius: 40,
                     backgroundColor: Colors.yellow[600],
-                    child: Icon(Icons.check, size: 50, color: isDarkMode ? Colors.black : Colors.white),
+                    child: Icon(Icons.check, size: 50, color: Colors.black),
                   ),
                   const SizedBox(height: 20),
                   Text(

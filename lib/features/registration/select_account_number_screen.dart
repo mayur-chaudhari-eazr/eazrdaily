@@ -70,10 +70,17 @@ class _SelectAccountNumberScreenState extends State<SelectAccountNumberScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CircleAvatar(
-                          radius: 24,
-                          backgroundColor: Colors.pink[100],
-                          child: const Icon(Icons.credit_card, color: Colors.pink),
+                        // Using NetworkImage for the custom image
+                        Container(
+                          width: 48, // diameter of the circle
+                          height: 48,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: AssetImage('assets/images/icon_2.png'), // Replace with your image URL
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
                         const SizedBox(height: 16),
                         Text(
@@ -125,10 +132,17 @@ class _SelectAccountNumberScreenState extends State<SelectAccountNumberScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CircleAvatar(
-                          radius: 24,
-                          backgroundColor: Colors.yellow[100],
-                          child: Icon(Icons.monetization_on, color: Colors.yellow[700]),
+                        // Using NetworkImage for the custom image
+                        Container(
+                          width: 48, // diameter of the circle
+                          height: 48,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: AssetImage('assets/images/icon_1.png'), // Replace with your image URL
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
                         const SizedBox(height: 16),
                         Text(

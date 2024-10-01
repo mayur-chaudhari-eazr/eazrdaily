@@ -155,7 +155,7 @@ class _InputOtpVerificationScreenState extends State<InputOtpVerificationScreen>
                         borderRadius: BorderRadius.circular(16),
                       ),
                     ), // Button is only enabled if OTP is complete
-                    child: const Text('Next'),
+                    child: const Text('Next', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                   ),
                 ),
               ),

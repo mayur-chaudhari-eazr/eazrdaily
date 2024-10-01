@@ -53,7 +53,13 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset('assets/images/onlylogo.png'),
+              // Conditionally load the logo based on dark or light mode
+              Image.asset(
+                isDarkMode
+                    ? 'assets/images/logo_white.png' // Dark mode logo
+                    : 'assets/images/onlylogo.png',  // Light mode logo
+                width: 80, // Set an appropriate width for the logo
+              ),
               const SizedBox(height: 20),
               Text(
                 'Reset Your password',
@@ -159,7 +165,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: const Text('Next'),
+                  child: const Text('Next', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                 ),
               ),
               const SizedBox(height: 16),

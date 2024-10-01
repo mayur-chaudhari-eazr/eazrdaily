@@ -84,7 +84,7 @@ class ResetSuccessScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(8),
                               ),
                             ),
-                            child: const Text('Login'),
+                            child: const Text('Login', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                           ),
                         ),
                         const SizedBox(height: 16),

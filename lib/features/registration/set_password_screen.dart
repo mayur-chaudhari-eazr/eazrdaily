@@ -54,7 +54,13 @@ class _SetPasswordScreenState extends State<SetPasswordScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset('assets/images/onlylogo.png'),
+              // Conditionally loading the logo based on dark or light mode
+              Image.asset(
+                isDarkMode
+                    ? 'assets/images/logo_white.png' // Dark mode logo
+                    : 'assets/images/onlylogo.png',  // Light mode logo
+                width: 80, // Set appropriate width for the logo
+              ),
               SizedBox(height: screenSize.height * 0.03),
               Text(
                 'Please set password',
@@ -159,7 +165,10 @@ class _SetPasswordScreenState extends State<SetPasswordScreen> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: const Text('Next', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                  child: const Text(
+                    'Next',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
               SizedBox(height: screenSize.height * 0.02),

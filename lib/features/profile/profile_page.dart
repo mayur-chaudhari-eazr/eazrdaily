@@ -118,7 +118,7 @@ class _ProfilePageState extends State<ProfilePage> {
         children: [
           const CircleAvatar(
             radius: 60, // Larger avatar size for impact
-            backgroundImage: NetworkImage('https://randomuser.me/api/portraits/men/1.jpg'),
+            backgroundImage: AssetImage('assets/images/person1.png'),
           ),
           const SizedBox(height: 24),
           Text(

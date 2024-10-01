@@ -153,31 +153,34 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
               // Next button
               SizedBox(
                   width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: _isPhoneValid
-                        ? () {
-                      // Navigate to OTP Verification Screen
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const OtpVerificationScreen(),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: ElevatedButton(
+                      onPressed: _isPhoneValid
+                          ? () {
+                        // Navigate to OTP Verification Screen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const OtpVerificationScreen(),
+                          ),
+                        );
+                      }
+                          : null,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: _isPhoneValid
+                            ? (isDarkMode ? Colors.white : Colors.black)
+                            : Colors.grey,
+                        foregroundColor: _isPhoneValid
+                            ? (isDarkMode ? Colors.black : Colors.white)
+                            : Colors.black38,
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
                         ),
-                      );
-                    }
-                        : null,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: _isPhoneValid
-                          ? (isDarkMode ? Colors.white : Colors.black)
-                          : Colors.grey,
-                      foregroundColor: _isPhoneValid
-                          ? (isDarkMode ? Colors.black : Colors.white)
-                          : Colors.black38,
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                    ), // Disable button if phone is not valid
-                    child: const Text('Next', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                      ), // Disable button if phone is not valid
+                      child: const Text('Next', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                    ),
                   ),
                 ),
             ],

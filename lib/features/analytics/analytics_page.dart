@@ -179,7 +179,7 @@ class AnalyticsPage extends StatelessWidget {
             SizedBox(height: Window.getVerticalSize(30)),
             _buildTransactionItemWithImage(context, 'Transfer', '+1,230.00', 'POS', '*4243', 'assets/images/Avatar.png', isDarkMode),
             const Divider(color: Colors.grey), // Ensure Divider is visible in dark mode
-            _buildTransactionItemWithImage(context, 'Coffee world', '-32.26', 'Recreation & Entertainment', '', 'assets/images/iconbutton.png', isDarkMode),
+            _buildTransactionItemWithImage(context, 'Coffee world', '-32.26', 'Recreation & Entertainment', '', 'assets/images/transfer.png', isDarkMode),
             const SizedBox(height: 80),
           ],
         ),

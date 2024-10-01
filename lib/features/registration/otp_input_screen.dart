@@ -142,21 +142,24 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
               const SizedBox(height: 15),
                SizedBox(
                   width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: isOtpComplete ? navigateToNextScreen : null,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: isOtpComplete
-                          ? (isDarkMode ? Colors.white : Colors.black)
-                          : Colors.grey, // Button is grey if OTP is incomplete
-                      foregroundColor: isOtpComplete
-                          ? (isDarkMode ? Colors.black : Colors.white)
-                          : Colors.white,
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                    ), // Button is only enabled if OTP is complete
-                    child: const Text('Next', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: ElevatedButton(
+                      onPressed: isOtpComplete ? navigateToNextScreen : null,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: isOtpComplete
+                            ? (isDarkMode ? Colors.white : Colors.black)
+                            : Colors.grey, // Button is grey if OTP is incomplete
+                        foregroundColor: isOtpComplete
+                            ? (isDarkMode ? Colors.black : Colors.white)
+                            : Colors.white,
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                      ), // Button is only enabled if OTP is complete
+                      child: const Text('Next', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                    ),
                   ),
                 ),
             ]

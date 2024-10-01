@@ -376,7 +376,7 @@ class _HomePageState extends State<HomePage> {
                   _buildSendMoneyAvatar(
                     'Transfer',
                     imageAsset: isDarkMode ? 'assets/images/trackon.png' // Visa logo
-                        : 'assets/images/iconbutton.png',
+                        : 'assets/images/transfer.png',
                     onTap: () {
                       Navigator.push(
                         context,
