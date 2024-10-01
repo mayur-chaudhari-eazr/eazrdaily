@@ -145,16 +145,16 @@ class _PinCodeSettingsState extends State<PinCodeSettings> {
       },
       child: CircleAvatar(
         radius: 50,
-        backgroundColor: isDarkMode ? Colors.grey[800] : Colors.grey[200],
+        backgroundColor: isDarkMode ? Colors.white : Colors.grey[200], // White in dark mode
         child: key == '<'
-            ? Icon(Icons.backspace, color: isDarkMode ? Colors.white : Colors.black)
+            ? Icon(Icons.backspace, color: isDarkMode ? Colors.black : Colors.black) // Black backspace icon
             : Text(
-          key,
-          style: TextStyle(
-            fontSize: 24,
-            color: isDarkMode ? Colors.white : Colors.black,
-          ),
-        ),
+                key,
+                style: TextStyle(
+                  fontSize: 24,
+                  color: isDarkMode ? Colors.black : Colors.black, // Black text for both modes
+                ),
+              ),
       ),
     );
   }

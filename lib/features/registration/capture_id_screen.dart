@@ -61,25 +61,28 @@ class CaptureIDScreen extends StatelessWidget {
               ),
               const Spacer(),
               Center(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: isDarkMode ? Colors.white : Colors.black,
-                    padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 100),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>  FrontPanVerificationScreen(),
+                child: SizedBox(
+                  width: double.infinity, // Makes the button take the full width
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: isDarkMode ? Colors.white : Colors.black,
+                      padding: const EdgeInsets.symmetric(vertical: 16), // Adjusted vertical padding
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                    );
-                  },
-                  child: Text(
-                    'Begin shooting',
-                    style: TextStyle(color: isDarkMode ? Colors.black : Colors.white, fontSize: 16),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const FrontPanVerificationScreen(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      'Begin shooting',
+                      style: TextStyle(color: isDarkMode ? Colors.black : Colors.white, fontSize: 16),
+                    ),
                   ),
                 ),
               ),

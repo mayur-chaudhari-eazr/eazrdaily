@@ -16,7 +16,7 @@ class PersonalInfoScreen extends StatelessWidget {
           'Personal info',
           style: TextStyle(
             color: isDarkMode ? Colors.white : Colors.black,
-            fontSize: 24, // Increased font size for the title
+            fontSize: 26, // Increased font size for the title
             fontWeight: FontWeight.bold,
           ),
         ),

@@ -140,9 +140,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                 ],
               ),
               const SizedBox(height: 15),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: SizedBox(
+               SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: isOtpComplete ? navigateToNextScreen : null,
@@ -158,15 +156,14 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                         borderRadius: BorderRadius.circular(16),
                       ),
                     ), // Button is only enabled if OTP is complete
-                    child: const Text('Next'),
+                    child: const Text('Next', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                   ),
                 ),
+            ]
               ),
-              const SizedBox(height: 16),
-            ],
           ),
         ),
-      ),
-    );
+      );
+  
   }
 }

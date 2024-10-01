@@ -56,7 +56,7 @@ class DashboardPage extends StatelessWidget {
     );
   }
 
-  // Function to build the floating BottomNavigationBar with swapped colors
+  // Function to build the floating BottomNavigationBar with centered icons
   Widget _buildFloatingBottomNavigationBar(BuildContext context, bool isDarkMode) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(15), // Rounded corners for the floating bar
@@ -69,29 +69,24 @@ class DashboardPage extends StatelessWidget {
             return BottomNavigationBar(
               currentIndex: selectedIndex,
               onTap: (index) => context.read<BottomNavCubit>().changeTab(index),
-              // Retaining theme colors for selected and unselected items
-              selectedItemColor: isDarkMode ? Colors.white : Colors.black, // Original colors
-              unselectedItemColor: isDarkMode ? Colors.grey[600] : Colors.grey, // Original colors
-              
-              items: const [
+              selectedItemColor: isDarkMode ? Colors.white : Colors.black,
+              unselectedItemColor: isDarkMode ? Colors.grey[600] : Colors.grey,
+              items: [
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.credit_card),
+                  icon: Center(child: Icon(Icons.credit_card, size: 30)), // Centered icon
                   label: 'Home',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.bar_chart),
+                  icon: Center(child: Icon(Icons.bar_chart, size: 30)), // Centered icon
                   label: 'Analytics',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.person),
+                  icon: Center(child: Icon(Icons.person, size: 30)), // Centered icon
                   label: 'Profile',
                 ),
               ],
-
-              showSelectedLabels: false, // Hide labels
-              showUnselectedLabels: false, // Hide labels
-
-              // Custom icon size for selected and unselected states
+              showSelectedLabels: false,
+              showUnselectedLabels: false,
               selectedIconTheme: const IconThemeData(
                 size: 30, // Adjust icon size for selected state
               ),

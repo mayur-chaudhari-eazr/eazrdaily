@@ -68,7 +68,7 @@ class FingerprintLoginScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                child: const Text('Allow'),
+                child: const Text('Allow', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
               ),
             ),
             const SizedBox(height: 20),
@@ -81,7 +81,7 @@ class FingerprintLoginScreen extends StatelessWidget {
                 'Maybe later',
                 style: TextStyle(
                   fontSize: 16,
-                  color: isDarkMode ? Colors.white70 : Colors.grey,
+                  color: isDarkMode ? Colors.white : Colors.grey,
                 ),
               ),
             ),

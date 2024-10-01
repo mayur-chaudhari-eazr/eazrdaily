@@ -7,8 +7,7 @@ class IDConfirmationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    final Size screenSize = MediaQuery.of(context).size; // Get screen size for responsiveness
-    final double buttonPadding = screenSize.height * 0.02; // Dynamic button padding based on screen height
+    final Size screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
       appBar: AppBar(
@@ -22,22 +21,22 @@ class IDConfirmationScreen extends StatelessWidget {
         ),
       ),
       body: SafeArea(
-        child: SingleChildScrollView( // Added SingleChildScrollView to make screen scrollable
+        child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.05), // Dynamic horizontal padding
+            padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.05),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: screenSize.height * 0.02), // Dynamic top spacing
+                SizedBox(height: screenSize.height * 0.02),
                 Text(
                   'Please retake the photo.',
                   style: TextStyle(
-                    fontSize: screenSize.width * 0.06, // Responsive font size
+                    fontSize: screenSize.width * 0.05, // Adjusted font size
                     fontWeight: FontWeight.bold,
                     color: isDarkMode ? Colors.white : Colors.black,
                   ),
                 ),
-                SizedBox(height: screenSize.height * 0.01), // Dynamic spacing
+                SizedBox(height: screenSize.height * 0.01),
                 Text(
                   'If any information is incorrect, please retake the ID photo.',
                   style: TextStyle(
@@ -45,13 +44,16 @@ class IDConfirmationScreen extends StatelessWidget {
                     color: isDarkMode ? Colors.grey[400] : Colors.grey[600],
                   ),
                 ),
-                SizedBox(height: screenSize.height * 0.03), // Dynamic spacing
+                SizedBox(height: screenSize.height * 0.03),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       'Sex',
-                      style: TextStyle(fontSize: screenSize.width * 0.04, color: isDarkMode ? Colors.white : Colors.black),
+                      style: TextStyle(
+                        fontSize: screenSize.width * 0.04, 
+                        color: isDarkMode ? Colors.white : Colors.black,
+                      ),
                     ),
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -61,21 +63,24 @@ class IDConfirmationScreen extends StatelessWidget {
                       ),
                       child: Text(
                         'Male',
-                        style: TextStyle(fontSize: screenSize.width * 0.04, color: isDarkMode ? Colors.white : Colors.black),
+                        style: TextStyle(
+                          fontSize: screenSize.width * 0.04, 
+                          color: isDarkMode ? Colors.white : Colors.black,
+                        ),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: screenSize.height * 0.03), // Dynamic spacing
+                SizedBox(height: screenSize.height * 0.03),
                 Text(
                   'ID information',
                   style: TextStyle(
-                    fontSize: screenSize.width * 0.05, // Responsive font size
+                    fontSize: screenSize.width * 0.05, 
                     fontWeight: FontWeight.bold,
                     color: isDarkMode ? Colors.white : Colors.black,
                   ),
                 ),
-                SizedBox(height: screenSize.height * 0.01), // Dynamic spacing
+                SizedBox(height: screenSize.height * 0.01),
                 _buildInfoRow('Full name', 'Thanh Nhan', isDarkMode, screenSize),
                 const Divider(),
                 _buildInfoRow('Date of birth', '01/01/1999', isDarkMode, screenSize),
@@ -87,11 +92,11 @@ class IDConfirmationScreen extends StatelessWidget {
                 _buildInfoRow('Place of issue', 'HaNoi', isDarkMode, screenSize),
                 const Divider(),
                 _buildInfoRow('Address', '191 Hai Ba Trung,\nLong Bien, Ha Noi', isDarkMode, screenSize),
-                SizedBox(height: screenSize.height * 0.05), // Added some spacing before buttons
-                _buildActionButton(context, 'Confirm', isDarkMode ? Colors.white : Colors.black, isDarkMode ? Colors.black : Colors.white, buttonPadding),
-                SizedBox(height: screenSize.height * 0.01), // Dynamic spacing
-                _buildActionButton(context, 'Retake', isDarkMode ? Colors.black : Colors.white, isDarkMode ? Colors.white : Colors.black, buttonPadding, isOutlined: true),
-                SizedBox(height: screenSize.height * 0.03), // Dynamic bottom spacing
+                SizedBox(height: screenSize.height * 0.02),
+                _buildActionButton(context, 'Confirm', isDarkMode ? Colors.white : Colors.black, isDarkMode ? Colors.black : Colors.white, screenSize.height * 0.02),
+                SizedBox(height: screenSize.height * 0.01),
+                _buildActionButton(context, 'Retake', isDarkMode ? Colors.black : Colors.white, isDarkMode ? Colors.white : Colors.black, screenSize.height * 0.02, isOutlined: true),
+                SizedBox(height: screenSize.height * 0.03),
               ],
             ),
           ),
@@ -108,13 +113,20 @@ class IDConfirmationScreen extends StatelessWidget {
         children: [
           Text(
             title,
-            style: TextStyle(fontSize: screenSize.width * 0.04, color: isDarkMode ? Colors.white : Colors.black), // Responsive font size
+            style: TextStyle(
+              fontSize: screenSize.width * 0.04, 
+              color: isDarkMode ? Colors.white : Colors.black,
+            ),
           ),
           Expanded(
             child: Text(
               value,
               textAlign: TextAlign.right,
-              style: TextStyle(fontSize: screenSize.width * 0.04, fontWeight: FontWeight.bold, color: isDarkMode ? Colors.white : Colors.black), // Responsive font size
+              style: TextStyle(
+                fontSize: screenSize.width * 0.04, 
+                fontWeight: FontWeight.bold,
+                color: isDarkMode ? Colors.white : Colors.black,
+              ),
             ),
           ),
         ],
@@ -127,8 +139,9 @@ class IDConfirmationScreen extends StatelessWidget {
       width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          foregroundColor: textColor, backgroundColor: backgroundColor,
-          padding: EdgeInsets.symmetric(vertical: buttonPadding), // Dynamic button padding
+          foregroundColor: textColor,
+          backgroundColor: backgroundColor,
+          padding: EdgeInsets.symmetric(vertical: buttonPadding),
           side: isOutlined ? BorderSide(color: textColor) : BorderSide.none,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
@@ -142,7 +155,7 @@ class IDConfirmationScreen extends StatelessWidget {
         },
         child: Text(
           text,
-          style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04), // Responsive font size for button text
+          style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
         ),
       ),
     );

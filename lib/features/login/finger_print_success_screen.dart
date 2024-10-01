@@ -67,7 +67,7 @@ class _FingerprintSuccessScreenState extends State<FingerprintSuccessScreen> {
               child: Icon(
                 Icons.check,
                 size: 30,
-                color: isDarkMode ? Colors.white : Colors.black,
+                color: Colors.black,
               ),
             ),
             const Spacer(),

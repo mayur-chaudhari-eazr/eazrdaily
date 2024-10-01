@@ -59,7 +59,7 @@ class FingerprintErrorScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                child: const Text('Try again with fingerprint'),
+                child: const Text('Try again with fingerprint', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
               ),
             ),
             const SizedBox(height: 20),

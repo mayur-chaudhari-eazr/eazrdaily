@@ -159,7 +159,7 @@ class _SetPasswordScreenState extends State<SetPasswordScreen> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: const Text('Next'),
+                  child: const Text('Next', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                 ),
               ),
               SizedBox(height: screenSize.height * 0.02),

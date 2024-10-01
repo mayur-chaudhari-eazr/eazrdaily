@@ -1,26 +1,15 @@
 import 'package:eazrdaily/features/registration/id_confirmation_screen.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
 
 class BackPanVerificationScreen extends StatefulWidget {
   const BackPanVerificationScreen({super.key});
 
   @override
-  _BackPanVerificationScreenState createState() => _BackPanVerificationScreenState();
+  _BackPanVerificationScreenState createState() =>
+      _BackPanVerificationScreenState();
 }
 
 class _BackPanVerificationScreenState extends State<BackPanVerificationScreen> {
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(const Duration(seconds: 3), () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) =>  IDConfirmationScreen()),
-      );
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +35,7 @@ class _BackPanVerificationScreenState extends State<BackPanVerificationScreen> {
                 const Text(
                   'Take a photo of the back of your ID',
                   style: TextStyle(
-                    fontSize: 22,
+                    fontSize: 18, // Adjusted font size
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
@@ -82,15 +71,29 @@ class _BackPanVerificationScreenState extends State<BackPanVerificationScreen> {
             ),
           ),
           const Spacer(),
-          const Padding(
-            padding:EdgeInsets.only(bottom: 20),
-            child: CircleAvatar(
-              radius: 30,
-              backgroundColor: Colors.white,
-              child: Icon(
-                Icons.camera_alt,
-                size: 30,
-                color: Colors.black,
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.white,
+              ),
+              child: IconButton(
+                icon: const Icon(
+                  Icons.camera_alt,
+                  size: 30,
+                  color: Colors.black,
+                ),
+                onPressed: () {
+                  // Navigate to the IDConfirmationScreen when the icon is pressed
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const IDConfirmationScreen(),
+                    ),
+                  );
+                },
+                padding: const EdgeInsets.all(15), // Adjust padding for circular effect
               ),
             ),
           ),

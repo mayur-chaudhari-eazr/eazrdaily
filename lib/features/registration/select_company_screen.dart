@@ -104,7 +104,7 @@ class _SelectCompanyScreenState extends State<SelectCompanyScreen> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                child: const Text('Next'),
+                child: const Text('Next', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
               ),
             ),
             const SizedBox(height: 16),

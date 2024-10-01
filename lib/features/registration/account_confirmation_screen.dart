@@ -88,18 +88,18 @@ class AccountConfirmationScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>  CreateUsernameScreen()),
+                    MaterialPageRoute(builder: (context) => CreateUsernameScreen()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: isDarkMode ? Colors.white : Colors.black,
                   foregroundColor: isDarkMode ? Colors.black : Colors.white,
-                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  padding: const EdgeInsets.symmetric(vertical: 20), // Increased vertical padding
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                child: const Text('Next'),
+                child: const Text('Next', style: TextStyle(fontSize: 18)), // Optional: adjust text size
               ),
             ),
             const SizedBox(height: 16),

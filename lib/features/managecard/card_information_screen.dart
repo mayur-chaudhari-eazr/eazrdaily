@@ -112,64 +112,61 @@ class CardInformationScreen extends StatelessWidget {
       context: context,
       isScrollControlled: true,
       builder: (context) {
-        return Transform.rotate(
-          angle: 0.1745, // Tilting the container by 10 degrees
-          child: Container(
-            padding: const EdgeInsets.all(16.0),
-            height: MediaQuery.of(context).size.height * 0.5,
-            decoration: BoxDecoration(
-              color: isDarkMode ? Colors.grey[900] : Colors.grey[300],
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.close, color: isDarkMode ? Colors.white : Colors.black),
-                      onPressed: () => Navigator.pop(context),
+        return Container(
+          padding: const EdgeInsets.all(16.0),
+          height: MediaQuery.of(context).size.height * 0.5,
+          decoration: BoxDecoration(
+            color: isDarkMode ? Colors.grey[900] : Colors.grey[300],
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.close, color: isDarkMode ? Colors.white : Colors.black),
+                    onPressed: () => Navigator.pop(context),
+                  ),
+                  Text(
+                    'Select Date',
+                    style: TextStyle(
+                      color: isDarkMode ? Colors.white : Colors.black,
+                      fontSize: 22, // Increased font size for title
+                      fontWeight: FontWeight.bold,
                     ),
-                    Text(
-                      'Select Date',
-                      style: TextStyle(
-                        color: isDarkMode ? Colors.white : Colors.black,
-                        fontSize: 22, // Increased font size for title
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.check, color: isDarkMode ? Colors.white : Colors.black),
-                      onPressed: () {
-                        // Confirm date selection
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ],
-                ),
-                const Divider(),
-                Expanded(
-                  child: CalendarDatePicker(
-                    initialDate: DateTime.now(),
-                    firstDate: DateTime(2020),
-                    lastDate: DateTime(2030),
-                    onDateChanged: (date) {
-                      // Handle date change
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.check, color: isDarkMode ? Colors.white : Colors.black),
+                    onPressed: () {
+                      // Confirm date selection
+                      Navigator.pop(context);
                     },
                   ),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
+                ],
+              ),
+              const Divider(),
+              Expanded(
+                child: CalendarDatePicker(
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(2020),
+                  lastDate: DateTime(2030),
+                  onDateChanged: (date) {
+                    // Handle date change
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: isDarkMode ? Colors.white : Colors.black,
-                    foregroundColor: isDarkMode ? Colors.black : Colors.white,
-                  ),
-                  child: const Text('Confirm', style: TextStyle(fontSize: 18)), // Increased font size for button
                 ),
-              ],
-            ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: isDarkMode ? Colors.white : Colors.black,
+                  foregroundColor: isDarkMode ? Colors.black : Colors.white,
+                ),
+                child: const Text('Confirm', style: TextStyle(fontSize: 18)), // Increased font size for button
+              ),
+            ],
           ),
         );
       },

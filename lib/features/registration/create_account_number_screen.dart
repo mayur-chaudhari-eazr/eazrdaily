@@ -123,7 +123,7 @@ class _CreateAccountNumberScreenState extends State<CreateAccountNumberScreen> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ), // Disable button if not enough digits entered
-                child: const Text('Next'),
+                child: const Text('Next', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
               ),
             ),
             const SizedBox(height: 16),

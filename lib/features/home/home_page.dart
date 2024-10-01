@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
                 : Container(), // Show empty container if no image
           ),
           SizedBox(height: 10),
-          Text(name, style: TextStyle(fontSize: 16)),
+          Text(name, style: TextStyle(fontSize: 14)), // Reduced font size
         ],
       ),
     );
@@ -64,10 +64,10 @@ class _HomePageState extends State<HomePage> {
       title: Text(
         title,
         style: TextStyle(
-          fontSize: 22,
+          fontSize: 20, // Reduced font size
         ),
       ),
-      subtitle: Text(subtitle),
+      subtitle: Text(subtitle, style: TextStyle(fontSize: 14)), // Reduced font size
       trailing: Text(
         '${amount.toStringAsFixed(2)}', // Format the amount
         style: TextStyle(
@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> {
               ? (isDarkMode ? Colors.white : Colors.black)
               : Colors.green,
           fontWeight: FontWeight.bold,
-          fontSize: 20,
+          fontSize: 18, // Reduced font size
         ),
       ),
     );
@@ -125,7 +125,7 @@ class _HomePageState extends State<HomePage> {
                 Text(
                   'Account and Card',
                   style: TextStyle(
-                    fontSize: 26, // Standard font size
+                    fontSize: 24, // Reduced font size
                     fontWeight: FontWeight.bold,
                     color: isDarkMode ? Colors.white : Colors.black,
                   ),
@@ -178,7 +178,6 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
 
-
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         child: Column(
@@ -205,8 +204,7 @@ class _HomePageState extends State<HomePage> {
                         ? const LinearGradient(
                       colors: [
                         Color(0xFF1E1E1E),
-                   // Dark whitish color for the upper part
-                        Color(0xFF1E1E1E), // Light whitish color for the lower part
+                        Color(0xFF1E1E1E),
                       ],
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
@@ -224,8 +222,7 @@ class _HomePageState extends State<HomePage> {
                               ? LinearGradient(
                             colors: [
                               Color(0xFFD9D9D9),
-                         // Light grey for the upper part
-                              Color(0xFFD9D9D9), // Darker grey for the lower part
+                              Color(0xFFD9D9D9),
                             ],
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
@@ -243,7 +240,7 @@ class _HomePageState extends State<HomePage> {
                               'Thanh Nhan Pham',
                               style: TextStyle(
                                 color: isDarkMode ? Colors.black : Colors.white, // Black text in dark mode
-                                fontSize: 18,
+                                fontSize: 16, // Reduced font size
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -252,7 +249,7 @@ class _HomePageState extends State<HomePage> {
                               '**** 0000',
                               style: TextStyle(
                                 color: isDarkMode ? Colors.black : Colors.white,
-                                fontSize: 20,
+                                fontSize: 18, // Reduced font size
                               ),
                             ),
                             IconButton(
@@ -308,7 +305,7 @@ class _HomePageState extends State<HomePage> {
                                 'Available balance',
                                 style: TextStyle(
                                   color: isDarkMode ? Colors.black : Colors.white, // Black text in dark mode
-                                  fontSize: 18,
+                                  fontSize: 16, // Reduced font size
                                 ),
                               ),
                               const SizedBox(height: 12),
@@ -323,21 +320,21 @@ class _HomePageState extends State<HomePage> {
                                     TextSpan(
                                       text: _isBalanceVisible ? 'INR ' : '',
                                       style: TextStyle(
-                                        fontSize: 30,
+                                        fontSize: 28, // Reduced font size
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                     TextSpan(
                                       text: _isBalanceVisible ? '1,368' : '******',
                                       style: const TextStyle(
-                                        fontSize: 50,
+                                        fontSize: 48, // Reduced font size
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                     TextSpan(
                                       text: _isBalanceVisible ? ' .00' : '',
                                       style: const TextStyle(
-                                        fontSize: 30,
+                                        fontSize: 28, // Reduced font size
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -349,7 +346,7 @@ class _HomePageState extends State<HomePage> {
                                 'Account *****8886',
                                 style: TextStyle(
                                   color: isDarkMode ? Colors.black : Colors.white, // Black text in dark mode
-                                  fontSize: 18,
+                                  fontSize: 16, // Reduced font size
                                 ),
                               ),
                             ],
@@ -362,18 +359,16 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-
             const SizedBox(height: 25),
 
             // Send Money Section
-            // Send Money Section
             const Text(
               'Send money',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold), // Reduced font size
             ),
             const SizedBox(height: 16),
 
-// Make the Row scrollable horizontally
+            // Make the Row scrollable horizontally
             SingleChildScrollView(
               scrollDirection: Axis.horizontal, // Enable horizontal scrolling
               child: Row(
@@ -402,7 +397,6 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 25),
 
-
             // Transaction History Section
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -411,7 +405,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   const Text(
                     'Transaction History',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold), // Reduced font size
                   ),
                   IconButton(
                     onPressed: () {
@@ -433,7 +427,7 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.all(8.0),
               child: const Text(
                 'Today',
-                style: TextStyle(fontSize: 20, color: Colors.grey),
+                style: TextStyle(fontSize: 18, color: Colors.grey), // Reduced font size
               ),
             ),
             const SizedBox(height: 5),
@@ -448,17 +442,17 @@ class _HomePageState extends State<HomePage> {
             _buildTransactionTile(
                 'Bank of America', 'Monthly rent payment', -24,
                 imageAsset: 'assets/images/banklogo1.png'),
-            const Divider( indent: 75,),
+            const Divider(indent: 75,),
             _buildTransactionTile('Transfer', 'Monthly EMI Due', 1368,
                 imageAsset: 'assets/images/Mastercard.png'),
-            const Divider( indent: 75,),
+            const Divider(indent: 75,),
             _buildTransactionTile(
                 'Bank of America', 'Monthly rent payment', -24,
                 imageAsset: 'assets/images/banklogo1.png'),
-            const Divider( indent: 75,),
+            const Divider(indent: 75,),
             _buildTransactionTile('Transfer', 'Monthly EMI Due', 1368,
                 imageAsset: 'assets/images/Mastercard.png'),
-            const Divider( indent: 75,),
+            const Divider(indent: 75,),
             SizedBox(height: 100,)
           ],
         ),

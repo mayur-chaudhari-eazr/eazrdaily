@@ -12,14 +12,6 @@ class _CheckFaceScreenState extends State<CheckFaceScreen> {
   @override
   void initState() {
     super.initState();
-
-    // Navigate to ProfileVerificationScreen after 3 seconds
-    Future.delayed(const Duration(seconds: 3), () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const ProfileVerificationScreen()),
-      );
-    });
   }
 
   @override
@@ -27,9 +19,9 @@ class _CheckFaceScreenState extends State<CheckFaceScreen> {
     final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      extendBodyBehindAppBar: true, // Extend body behind the appbar to achieve transparency
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Colors.transparent, // Make the AppBar transparent
+        backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: isDarkMode ? Colors.white : Colors.black),
@@ -43,7 +35,7 @@ class _CheckFaceScreenState extends State<CheckFaceScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 80), // Adjust height to avoid content getting under the AppBar
+            const SizedBox(height: 80),
             Text(
               'Facial recognition',
               style: TextStyle(
@@ -63,21 +55,20 @@ class _CheckFaceScreenState extends State<CheckFaceScreen> {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 40),
-            // Enlarged Circular image with green dashed border
             Expanded(
               child: Center(
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
                     const DashedCircle(
-                      width: 300, // Increase width of the dashed circle
-                      height: 300, // Increase height of the dashed circle
+                      width: 300,
+                      height: 300,
                       dashWidth: 6,
                       dashSpace: 4,
-                      color: Colors.green, // Dashed border color
+                      color: Colors.green,
                     ),
                     CircleAvatar(
-                      radius: 140, // Increase the radius of the image
+                      radius: 140,
                       backgroundColor: Colors.yellow[700],
                       backgroundImage: const AssetImage('assets/images/girlimage1.png'),
                     ),
@@ -88,7 +79,10 @@ class _CheckFaceScreenState extends State<CheckFaceScreen> {
             // Camera button
             IconButton(
               onPressed: () {
-                // Trigger camera action
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ProfileVerificationScreen()),
+                );
               },
               icon: Icon(
                 Icons.camera_alt,

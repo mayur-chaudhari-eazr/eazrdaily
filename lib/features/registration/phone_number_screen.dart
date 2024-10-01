@@ -151,9 +151,7 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
               const Spacer(), // Spacer to push the Next button to the bottom
 
               // Next button
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: SizedBox(
+              SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: _isPhoneValid
@@ -179,15 +177,13 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
                         borderRadius: BorderRadius.circular(16),
                       ),
                     ), // Disable button if phone is not valid
-                    child: const Text('Next'),
+                    child: const Text('Next', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                   ),
                 ),
-              ),
-              const SizedBox(height: 16),
             ],
+              ),
           ),
         ),
-      ),
-    );
+      );
   }
 }

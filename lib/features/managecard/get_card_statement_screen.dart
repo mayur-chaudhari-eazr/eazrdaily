@@ -98,7 +98,7 @@ class _GetCardStatementScreenState extends State<GetCardStatementScreen> {
                 // Handle get statement action
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: isDarkMode ? Colors.white : Colors.black,  // White background in dark mode, Black in light mode
+                backgroundColor: isDarkMode ? Colors.white : Colors.black,
                 minimumSize: const Size(double.infinity, 50),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16),
@@ -109,11 +109,10 @@ class _GetCardStatementScreenState extends State<GetCardStatementScreen> {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: isDarkMode ? Colors.black : Colors.white,  // Black text in dark mode, White in light mode
+                  color: isDarkMode ? Colors.black : Colors.white,
                 ),
               ),
             ),
-
           ],
         ),
       ),
@@ -259,7 +258,7 @@ class _GetCardStatementScreenState extends State<GetCardStatementScreen> {
       builder: (context) {
         return Container(
           padding: const EdgeInsets.all(16.0),
-          height: MediaQuery.of(context).size.height * 0.5,
+          height: MediaQuery.of(context).size.height * 0.6, // Adjusted height for better visibility
           child: Column(
             children: [
               Row(
@@ -277,7 +276,7 @@ class _GetCardStatementScreenState extends State<GetCardStatementScreen> {
                     icon: const Icon(Icons.check),
                     onPressed: () {
                       setState(() {
-                        datePeriod = '1 - 18 Feb';
+                        datePeriod = '1 - 18 Feb'; // This can be updated based on selected range
                       });
                       Navigator.pop(context);
                     },
@@ -290,15 +289,15 @@ class _GetCardStatementScreenState extends State<GetCardStatementScreen> {
                   data: Theme.of(context).copyWith(
                     colorScheme: isDarkMode
                         ? const ColorScheme.dark(
-                      primary: Colors.white,  // White color for selected circle in dark mode
-                      onPrimary: Colors.black, // Black text color inside the selected circle
-                      surface: Colors.grey,    // Background for other dates
-                    )
+                            primary: Colors.white,
+                            onPrimary: Colors.black,
+                            surface: Colors.grey,
+                          )
                         : const ColorScheme.light(
-                      primary: Colors.black,  // Black color for selected circle in light mode
-                      onPrimary: Colors.white, // White text color inside the selected circle
-                      surface: Colors.grey,   // Background for other dates
-                    ),
+                            primary: Colors.black,
+                            onPrimary: Colors.white,
+                            surface: Colors.grey,
+                          ),
                   ),
                   child: CalendarDatePicker(
                     initialDate: DateTime.now(),
@@ -315,7 +314,7 @@ class _GetCardStatementScreenState extends State<GetCardStatementScreen> {
                   Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: isDarkMode ? Colors.white : Colors.black,  // Black in light mode, White in dark mode
+                  backgroundColor: isDarkMode ? Colors.white : Colors.black,
                   minimumSize: const Size(double.infinity, 50),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16),
@@ -324,7 +323,7 @@ class _GetCardStatementScreenState extends State<GetCardStatementScreen> {
                 child: Text(
                   'Confirm',
                   style: TextStyle(
-                    color: isDarkMode ? Colors.black : Colors.white,  // Black text in dark mode, White in light mode
+                    color: isDarkMode ? Colors.black : Colors.white,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
@@ -336,7 +335,6 @@ class _GetCardStatementScreenState extends State<GetCardStatementScreen> {
       },
     );
   }
-
 
   String _getMonthName(int month) {
     const monthNames = [

@@ -12,13 +12,6 @@ class _ProfileVerificationScreenState extends State<ProfileVerificationScreen> {
   @override
   void initState() {
     super.initState();
-    // Navigate to the next screen after 3 seconds
-    Future.delayed(const Duration(seconds: 3), () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => SelectCompanyScreen()),
-      );
-    });
   }
 
   @override
@@ -28,7 +21,7 @@ class _ProfileVerificationScreenState extends State<ProfileVerificationScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent, // Transparent app bar for both modes
+        backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: isDarkMode ? Colors.white : Colors.black),
@@ -43,34 +36,32 @@ class _ProfileVerificationScreenState extends State<ProfileVerificationScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: screenSize.height * 0.02), // Responsive top spacing
+              SizedBox(height: screenSize.height * 0.02),
               Text(
                 'Hold on a moment',
                 style: TextStyle(
-                  fontSize: screenSize.width * 0.06, // Responsive font size
+                  fontSize: screenSize.width * 0.06,
                   fontWeight: FontWeight.bold,
                   color: isDarkMode ? Colors.white : Colors.black,
                 ),
               ),
-              SizedBox(height: screenSize.height * 0.01), // Responsive spacing
+              SizedBox(height: screenSize.height * 0.01),
               Text(
                 'We are analyzing your profile verification.',
                 style: TextStyle(
-                  fontSize: screenSize.width * 0.04, // Responsive font size
+                  fontSize: screenSize.width * 0.04,
                   color: isDarkMode ? Colors.white70 : Colors.grey[600],
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: screenSize.height * 0.05), // Responsive spacing
-              // Placeholder for rocket image
+              SizedBox(height: screenSize.height * 0.05),
               Image.asset(
                 'assets/images/ac_verify.png',
-                width: screenSize.width * 0.7, // Responsive image width
-                height: screenSize.height * 0.3, // Responsive image height
+                width: screenSize.width * 0.7,
+                height: screenSize.height * 0.3,
                 fit: BoxFit.contain,
               ),
-              SizedBox(height: screenSize.height * 0.05), // Responsive spacing
-              // Status list
+              SizedBox(height: screenSize.height * 0.05),
               _buildStatusTile(
                 icon: Icons.check_circle,
                 color: isDarkMode ? Colors.white : Colors.black,
@@ -93,17 +84,16 @@ class _ProfileVerificationScreenState extends State<ProfileVerificationScreen> {
                   backgroundColor: isDarkMode ? Colors.white : Colors.black,
                   padding: EdgeInsets.symmetric(
                     vertical: screenSize.height * 0.02,
-                    horizontal: screenSize.width * 0.15,
-                  ), // Responsive button padding
+                    horizontal: screenSize.width * 0.2, // Increased width
+                  ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
                 onPressed: () {
-                  // Handle facial recognition start
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const ProfileVerificationScreen()),
+                    MaterialPageRoute(builder: (context) => const SelectCompanyScreen()),
                   );
                 },
                 child: FittedBox(
@@ -111,12 +101,12 @@ class _ProfileVerificationScreenState extends State<ProfileVerificationScreen> {
                     'Start facial recognition',
                     style: TextStyle(
                       color: isDarkMode ? Colors.black : Colors.white,
-                      fontSize: screenSize.width * 0.045, // Responsive font size
+                      fontSize: screenSize.width * 0.045,
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: screenSize.height * 0.02), // Responsive bottom spacing
+              SizedBox(height: screenSize.height * 0.02),
             ],
           ),
         ),
@@ -132,11 +122,11 @@ class _ProfileVerificationScreenState extends State<ProfileVerificationScreen> {
   }) {
     final Size screenSize = MediaQuery.of(context).size;
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: screenSize.height * 0.01), // Responsive padding
+      padding: EdgeInsets.symmetric(vertical: screenSize.height * 0.01),
       child: Row(
         children: [
-          Icon(icon, size: screenSize.width * 0.07, color: color), // Responsive icon size
-          SizedBox(width: screenSize.width * 0.03), // Responsive spacing
+          Icon(icon, size: screenSize.width * 0.07, color: color),
+          SizedBox(width: screenSize.width * 0.03),
           Expanded(
             child: Text(
               text,
@@ -155,18 +145,18 @@ class _ProfileVerificationScreenState extends State<ProfileVerificationScreen> {
   }) {
     final Size screenSize = MediaQuery.of(context).size;
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: screenSize.height * 0.01), // Responsive padding
+      padding: EdgeInsets.symmetric(vertical: screenSize.height * 0.01),
       child: Row(
         children: [
           SizedBox(
-            width: screenSize.width * 0.07, // Responsive size
-            height: screenSize.width * 0.07, // Responsive size
+            width: screenSize.width * 0.07,
+            height: screenSize.width * 0.07,
             child: CircularProgressIndicator(
               strokeWidth: 2.5,
               color: color,
             ),
           ),
-          SizedBox(width: screenSize.width * 0.03), // Responsive spacing
+          SizedBox(width: screenSize.width * 0.03),
           Expanded(
             child: Text(
               text,

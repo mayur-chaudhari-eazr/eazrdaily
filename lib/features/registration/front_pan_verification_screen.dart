@@ -1,6 +1,5 @@
 import 'package:eazrdaily/features/registration/back_pan_verification_screen.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
 
 class FrontPanVerificationScreen extends StatefulWidget {
   const FrontPanVerificationScreen({super.key});
@@ -10,18 +9,6 @@ class FrontPanVerificationScreen extends StatefulWidget {
 }
 
 class _FrontPanVerificationScreenState extends State<FrontPanVerificationScreen> {
-  @override
-  void initState() {
-    super.initState();
-    // Navigate to the next screen after 3 seconds using Future.delayed
-    Future.delayed(const Duration(seconds: 3), () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const BackPanVerificationScreen()),
-      );
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +34,7 @@ class _FrontPanVerificationScreenState extends State<FrontPanVerificationScreen>
                 const Text(
                   'Take a photo of the front of your ID',
                   style: TextStyle(
-                    fontSize: 22,
+                    fontSize: 18, // Adjusted font size
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
@@ -82,15 +69,29 @@ class _FrontPanVerificationScreenState extends State<FrontPanVerificationScreen>
             ),
           ),
           const Spacer(),
-          const Padding(
-            padding: EdgeInsets.only(bottom: 20),
-            child: CircleAvatar(
-              radius: 30,
-              backgroundColor: Colors.white,
-              child: Icon(
-                Icons.camera_alt,
-                size: 30,
-                color: Colors.black,
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.white,
+              ),
+              child: IconButton(
+                icon: const Icon(
+                  Icons.camera_alt,
+                  size: 30,
+                  color: Colors.black,
+                ),
+                onPressed: () {
+                  // Navigate to the BackPanVerificationScreen when the icon is pressed
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const BackPanVerificationScreen(),
+                    ),
+                  );
+                },
+                padding: EdgeInsets.all(15), // Adjust padding for circular effect
               ),
             ),
           ),

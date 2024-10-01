@@ -13,12 +13,6 @@ class _FacialRecognitionScreenState extends State<FacialRecognitionScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 3), () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => ProfileVerificationScreen()),
-      );
-    });
   }
 
   @override
@@ -27,7 +21,7 @@ class _FacialRecognitionScreenState extends State<FacialRecognitionScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent, // Transparent appbar for both modes
+        backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: isDarkMode ? Colors.white : Colors.black),
@@ -96,7 +90,7 @@ class _FacialRecognitionScreenState extends State<FacialRecognitionScreen> {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: isDarkMode ? Colors.white : Colors.black,
-                  padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 50), // Adjusted padding
+                  padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 100), // Wider button
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -107,7 +101,7 @@ class _FacialRecognitionScreenState extends State<FacialRecognitionScreen> {
                     MaterialPageRoute(builder: (context) => const CheckFaceScreen()),
                   );
                 },
-                child: FittedBox( // Ensures the text is always on one line
+                child: FittedBox(
                   child: Text(
                     'Start facial recognition',
                     style: TextStyle(color: isDarkMode ? Colors.black : Colors.white, fontSize: 16),
