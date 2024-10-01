@@ -155,7 +155,7 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
               borderSide: BorderSide(color: Colors.white), // Grey border
             ),
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.white), // Grey border when not focused
+              borderSide: BorderSide(color: Colors.grey), // Grey border when not focused
             ),
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.white), // Grey border when focused
