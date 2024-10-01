@@ -62,7 +62,7 @@ class TransferSuccessfulPage extends StatelessWidget {
                   backgroundColor: Colors.yellow,
                   child: Icon(
                     Icons.check,
-                    color: isDarkMode ? Colors.white : Colors.black,  // Adjust icon color based on theme
+                    color: Colors.black,  // Adjust icon color based on theme
                     size: 50,
                   ),
                 ),
