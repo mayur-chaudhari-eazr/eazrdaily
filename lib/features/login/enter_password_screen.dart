@@ -148,7 +148,7 @@ class _EnterPasswordScreenState extends State<EnterPasswordScreen> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                child: const Text('Login In'),
+                child: const Text('Login'),
               ),
             ),
             const SizedBox(height: 16),

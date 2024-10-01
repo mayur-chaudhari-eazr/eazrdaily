@@ -121,7 +121,7 @@ class _OnboardingScreen4State extends State<OnboardingScreen4> {
                       ),
                       elevation: 5,
                     ),
-                    child: const Text('Log in'),
+                    child: const Text('Log in', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                   ),
                   SizedBox(height: screenHeight * 0.02),
                   OutlinedButton(
@@ -142,7 +142,7 @@ class _OnboardingScreen4State extends State<OnboardingScreen4> {
                       ),
                       foregroundColor: isDarkMode ? Colors.white : Colors.black,
                     ),
-                    child: const Text('Register'),
+                    child: const Text('Register', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                   ),
                 ],
               ),

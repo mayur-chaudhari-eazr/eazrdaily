@@ -42,7 +42,7 @@ class _EnterPasscodeScreenState extends State<EnterPasscodeScreen> {
     // Navigate to fingerprint login screen
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) =>  FingerprintLoginScreen()),
+      MaterialPageRoute(builder: (context) => FingerprintLoginScreen()),
     );
   }
 
@@ -131,11 +131,11 @@ class _EnterPasscodeScreenState extends State<EnterPasscodeScreen> {
           onTap: _onBiometricPressed,
           child: CircleAvatar(
             radius: 50,
-            backgroundColor: isDarkMode ? Colors.grey[800] : Colors.grey[200],
+            backgroundColor: isDarkMode ? Colors.white : Colors.grey[200], // Changed to white in dark mode
             child: Icon(
               Icons.fingerprint,
               size: 40,
-              color: isDarkMode ? Colors.white : Colors.black,
+              color: isDarkMode ? Colors.black : Colors.black, // Black for dark mode
             ),
           ),
         ),
@@ -146,12 +146,12 @@ class _EnterPasscodeScreenState extends State<EnterPasscodeScreen> {
           },
           child: CircleAvatar(
             radius: 50,
-            backgroundColor: isDarkMode ? Colors.grey[800] : Colors.grey[200],
+            backgroundColor: isDarkMode ? Colors.white : Colors.grey[200], // Changed to white in dark mode
             child: Text(
               '0',
               style: TextStyle(
                 fontSize: 24,
-                color: isDarkMode ? Colors.white : Colors.black,
+                color: isDarkMode ? Colors.black : Colors.black, // Changed text color to black in dark mode
               ),
             ),
           ),
@@ -161,10 +161,10 @@ class _EnterPasscodeScreenState extends State<EnterPasscodeScreen> {
           onTap: _onBackspacePressed,
           child: CircleAvatar(
             radius: 50,
-            backgroundColor: isDarkMode ? Colors.grey[800] : Colors.grey[200],
+            backgroundColor: isDarkMode ? Colors.white : Colors.grey[200], // Changed to white in dark mode
             child: Icon(
               Icons.backspace,
-              color: isDarkMode ? Colors.white : Colors.black,
+              color: isDarkMode ? Colors.black : Colors.black, // Black for dark mode
             ),
           ),
         ),
@@ -187,16 +187,16 @@ class _EnterPasscodeScreenState extends State<EnterPasscodeScreen> {
           },
           child: CircleAvatar(
             radius: 50,
-            backgroundColor: isDarkMode ? Colors.grey[800] : Colors.grey[200],
+            backgroundColor: isDarkMode ? Colors.white : Colors.grey[200], // Changed to white in dark mode
             child: key == '<'
-                ? Icon(Icons.backspace, color: isDarkMode ? Colors.white : Colors.black)
+                ? Icon(Icons.backspace, color: isDarkMode ? Colors.black : Colors.black)
                 : Text(
-              key,
-              style: TextStyle(
-                fontSize: 24,
-                color: isDarkMode ? Colors.white : Colors.black,
-              ),
-            ),
+                    key,
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: isDarkMode ? Colors.black : Colors.black, // Changed text color to black in dark mode
+                    ),
+                  ),
           ),
         );
       }).toList(),

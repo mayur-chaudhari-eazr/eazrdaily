@@ -34,7 +34,7 @@ class _CreatePasscodeScreenState extends State<CreatePasscodeScreen> {
   void _navigateToNextScreen() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) =>  FingerprintLoginScreen()), // Replace with your next screen widget
+      MaterialPageRoute(builder: (context) => FingerprintLoginScreen()), // Replace with your next screen widget
     );
   }
 
@@ -126,16 +126,16 @@ class _CreatePasscodeScreenState extends State<CreatePasscodeScreen> {
           },
           child: CircleAvatar(
             radius: 50,
-            backgroundColor: isDarkMode ? Colors.grey[800] : Colors.grey[200],
+            backgroundColor: isDarkMode ? Colors.white : Colors.grey[200], // Changed to white in dark mode
             child: key == '<'
-                ? Icon(Icons.backspace, color: isDarkMode ? Colors.white : Colors.black)
+                ? Icon(Icons.backspace, color: isDarkMode ? Colors.black : Colors.black) // Black for dark mode
                 : Text(
-              key,
-              style: TextStyle(
-                fontSize: 24,
-                color: isDarkMode ? Colors.white : Colors.black,
-              ),
-            ),
+                    key,
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: isDarkMode ? Colors.black : Colors.black, // Changed text color to black in dark mode
+                    ),
+                  ),
           ),
         );
       }).toList(),

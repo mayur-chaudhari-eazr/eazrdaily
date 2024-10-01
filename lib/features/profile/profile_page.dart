@@ -26,7 +26,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
     return Scaffold(
       appBar: _buildAppBar(context, isDarkMode),
-      backgroundColor: isDarkMode ? Colors.black : Colors.white,
+      backgroundColor: isDarkMode ? Color(0xFF1E1E1E) : Colors.white, // Dark mode background
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
@@ -126,6 +126,7 @@ class _ProfilePageState extends State<ProfilePage> {
             style: theme.textTheme.headlineMedium?.copyWith(
               fontSize: 28, // Larger name font size
               fontWeight: FontWeight.bold,
+              color: theme.brightness == Brightness.dark ? Colors.white : Colors.black, // Set color based on mode
             ),
           ),
           const SizedBox(height: 8),
@@ -156,6 +157,7 @@ class _ProfilePageState extends State<ProfilePage> {
         style: theme.textTheme.titleMedium?.copyWith(
           fontSize: 20,
           fontWeight: FontWeight.w500,
+          color: isDarkMode ? Colors.white : Colors.black,
         ),
       ),
       trailing: Icon(Icons.arrow_forward_ios, color: isDarkMode ? Colors.white : Colors.black, size: 20),
@@ -177,6 +179,7 @@ class _ProfilePageState extends State<ProfilePage> {
         style: Theme.of(context).textTheme.titleMedium?.copyWith(
           fontSize: 20,
           fontWeight: FontWeight.w500,
+          color: isDarkMode ? Colors.white : Colors.black,
         ),
       ),
       trailing: GestureDetector(
@@ -237,6 +240,7 @@ class _ProfilePageState extends State<ProfilePage> {
         style: Theme.of(context).textTheme.titleMedium?.copyWith(
           fontSize: 20,
           fontWeight: FontWeight.w500,
+          color: isDarkMode ? Colors.white : Colors.black,
         ),
       ),
       trailing: GestureDetector(

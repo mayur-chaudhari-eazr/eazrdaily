@@ -6,6 +6,7 @@ import '../../core/utils/window.dart'; // Import your Window class for responsiv
 class AnalyticsPage extends StatelessWidget {
   const AnalyticsPage({super.key});
 
+
   @override
   Widget build(BuildContext context) {
     // Adapt device screen size using your Window class
@@ -27,20 +28,20 @@ class AnalyticsPage extends StatelessWidget {
           'Transaction Statistics',
           style: TextStyle(
             color: isDarkMode ? Colors.white : Colors.black,
-            fontSize: Window.getFontSize(26), // Reduced font size
+            fontSize: Window.getFontSize(26), // Font size adjusted for readability
             fontWeight: FontWeight.bold,
           ),
         ),
         centerTitle: true,
         elevation: 0,
       ),
-      backgroundColor: isDarkMode ? Colors.grey[900] : Colors.white,
+      backgroundColor: isDarkMode ? Color(0xFF1E1E1E) : Colors.white, // Set background color based on mode
       body: SingleChildScrollView(
-        padding: Window.getPadding(all: 12), // Reduced padding
+        padding: Window.getPadding(all: 12), // Padding as per responsive design
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 12), // Reduced height
+            const SizedBox(height: 12),
             Center(
               child: Column(
                 children: [
@@ -48,37 +49,38 @@ class AnalyticsPage extends StatelessWidget {
                     TextSpan(
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: Window.getFontSize(36), // Reduced font size from 48
+                        fontSize: Window.getFontSize(36), // Large font size
+                        color: isDarkMode ? Colors.white : Colors.black, // Color based on mode
                       ),
                       children: [
                         TextSpan(
-                          text: '\$', // Small $ symbol
+                          text: '\$',
                           style: TextStyle(
-                            fontSize: Window.getFontSize(24), // Reduced font size from 30
+                            fontSize: Window.getFontSize(24),
                           ),
                         ),
                         const TextSpan(text: '1,368'), // Main large number
                         TextSpan(
-                          text: '.00', // Small .00 part
+                          text: '.00',
                           style: TextStyle(
-                            fontSize: Window.getFontSize(24), // Reduced font size from 30
+                            fontSize: Window.getFontSize(24),
                           ),
                         ),
                       ],
                     ),
                   ),
-                  SizedBox(height: Window.getVerticalSize(6)), // Reduced vertical size
+                  SizedBox(height: Window.getVerticalSize(6)),
                   Text(
                     "for May 2024",
                     style: TextStyle(
-                      fontSize: Window.getFontSize(16), // Reduced font size from 20
-                      color: Colors.grey,
+                      fontSize: Window.getFontSize(16),
+                      color: isDarkMode ? Colors.grey[300] : Colors.grey,
                     ),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: Window.getVerticalSize(20)), // Reduced vertical size
+            SizedBox(height: Window.getVerticalSize(20)),
 
             // Circular charts
             Stack(
@@ -89,8 +91,8 @@ class AnalyticsPage extends StatelessWidget {
                   series: <CircularSeries>[
                     DoughnutSeries<_ChartData, String>(
                       dataSource: [_ChartData('Remaining', 20, Colors.grey[600]!)],
-                      innerRadius: Window.getHorizontalSize(100).toString(), // Reduced inner radius
-                      radius: Window.getHorizontalSize(130).toString(), // Reduced radius
+                      innerRadius: Window.getHorizontalSize(100).toString(),
+                      radius: Window.getHorizontalSize(130).toString(),
                       startAngle: 270,
                       endAngle: 630,
                       pointColorMapper: (_ChartData data, _) => data.color,
@@ -137,15 +139,15 @@ class AnalyticsPage extends StatelessWidget {
                 // Center text container
                 Positioned(
                   child: Container(
-                    padding: Window.getPadding(all: 10), // Reduced padding
+                    padding: Window.getPadding(all: 10),
                     decoration: BoxDecoration(
-                      color: isDarkMode ? Colors.grey[100] : Colors.grey[800],
-                      borderRadius: BorderRadius.circular(Window.getRadiusSize(10)), // Reduced radius
+                      color: isDarkMode ? Colors.grey[800] : Colors.grey[100],
+                      borderRadius: BorderRadius.circular(Window.getRadiusSize(10)),
                       boxShadow: [
                         BoxShadow(
                           color: isDarkMode ? Colors.black26 : Colors.grey.withOpacity(0.3),
-                          blurRadius: Window.getHorizontalSize(8), // Reduced blur
-                          spreadRadius: Window.getHorizontalSize(4), // Reduced spread
+                          blurRadius: Window.getHorizontalSize(8),
+                          spreadRadius: Window.getHorizontalSize(4),
                           offset: const Offset(0, 4),
                         ),
                       ],
@@ -153,8 +155,8 @@ class AnalyticsPage extends StatelessWidget {
                     child: Text(
                       "\$10,125",
                       style: TextStyle(
-                        color: isDarkMode ? Colors.black : Colors.white,
-                        fontSize: Window.getFontSize(24), // Reduced font size
+                        color: isDarkMode ? Colors.white : Colors.black,
+                        fontSize: Window.getFontSize(24),
                       ),
                     ),
                   ),
@@ -163,22 +165,22 @@ class AnalyticsPage extends StatelessWidget {
             ),
 
             // Legends
-            SizedBox(height: Window.getVerticalSize(24)), // Reduced vertical size
+            SizedBox(height: Window.getVerticalSize(24)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                _buildLegend('POS', Colors.blue),
-                SizedBox(width: Window.getHorizontalSize(12)), // Reduced spacing
-                _buildLegend('Transfer', Colors.yellow),
+                _buildLegend('POS', Colors.blue, isDarkMode), // Pass isDarkMode here
+                SizedBox(width: Window.getHorizontalSize(12)),
+                _buildLegend('Transfer', Colors.yellow, isDarkMode), // Pass isDarkMode here
               ],
             ),
 
             // Transaction details section
-            SizedBox(height: Window.getVerticalSize(30)), // Reduced vertical size
+            SizedBox(height: Window.getVerticalSize(30)),
             _buildTransactionItemWithImage(context, 'Transfer', '+1,230.00', 'POS', '*4243', 'assets/images/Avatar.png', isDarkMode),
-            const Divider(), // Ensure Divider is visible
+            const Divider(color: Colors.grey), // Ensure Divider is visible in dark mode
             _buildTransactionItemWithImage(context, 'Coffee world', '-32.26', 'Recreation & Entertainment', '', 'assets/images/iconbutton.png', isDarkMode),
-            const SizedBox(height: 80), // Reduced extra spacing
+            const SizedBox(height: 80),
           ],
         ),
       ),
@@ -186,19 +188,25 @@ class AnalyticsPage extends StatelessWidget {
   }
 
   // Builds the legend items
-  Widget _buildLegend(String text, Color color) {
+  Widget _buildLegend(String text, Color color, bool isDarkMode) {
     return Row(
       children: [
         Container(
-          width: Window.getHorizontalSize(40), // Reduced width
-          height: Window.getVerticalSize(20), // Reduced height
+          width: Window.getHorizontalSize(40),
+          height: Window.getVerticalSize(20),
           decoration: BoxDecoration(
             shape: BoxShape.rectangle,
             color: color,
           ),
         ),
-        SizedBox(width: Window.getHorizontalSize(10)), // Reduced spacing
-        Text(text, style: TextStyle(fontSize: Window.getFontSize(16))), // Reduced font size
+        SizedBox(width: Window.getHorizontalSize(10)),
+        Text(
+          text,
+          style: TextStyle(
+            fontSize: Window.getFontSize(16),
+            color: isDarkMode ? Colors.white : Colors.black, // Set text color based on dark mode
+          ),
+        ),
       ],
     );
   }
@@ -208,8 +216,8 @@ class AnalyticsPage extends StatelessWidget {
       [String? extraInfo, String imagePath = '', bool isDarkMode = false]) {
     final screenHeight = MediaQuery.of(context).size.height;
     final double dynamicSpacing = screenHeight < 600
-        ? Window.getVerticalSize(32) // Adjusted for smaller devices
-        : Window.getVerticalSize(48); // Adjusted for larger devices
+        ? Window.getVerticalSize(32)
+        : Window.getVerticalSize(48);
 
     return Column(
       children: [
@@ -220,26 +228,27 @@ class AnalyticsPage extends StatelessWidget {
               children: [
                 Image.asset(
                   imagePath,
-                  height: Window.getVerticalSize(32), // Reduced image size
-                  width: Window.getHorizontalSize(32), // Reduced image size
+                  height: Window.getVerticalSize(32),
+                  width: Window.getHorizontalSize(32),
                   fit: BoxFit.cover,
                 ),
-                SizedBox(width: Window.getHorizontalSize(10)), // Reduced spacing
+                SizedBox(width: Window.getHorizontalSize(10)),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       title,
                       style: TextStyle(
-                        fontSize: Window.getFontSize(16), // Reduced font size
+                        fontSize: Window.getFontSize(16),
                         fontWeight: FontWeight.bold,
+                        color: isDarkMode ? Colors.white : Colors.black,
                       ),
                     ),
                     Text(
                       subTitle,
                       style: TextStyle(
                         color: Colors.grey,
-                        fontSize: Window.getFontSize(14), // Reduced font size
+                        fontSize: Window.getFontSize(14),
                       ),
                     ),
                   ],
@@ -249,7 +258,7 @@ class AnalyticsPage extends StatelessWidget {
             Text(
               amount,
               style: TextStyle(
-                fontSize: Window.getFontSize(16), // Reduced font size
+                fontSize: Window.getFontSize(16),
                 color: isDarkMode ? Colors.white : Colors.black,
                 fontWeight: FontWeight.bold,
               ),
