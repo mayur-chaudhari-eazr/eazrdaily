@@ -32,7 +32,10 @@ class NotificationPage extends StatelessWidget {
               },
               child: Text(
                 'Read All',
-                style: TextStyle(color: Theme.of(context).textTheme.bodyLarge?.color),
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.primary,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ],
@@ -40,6 +43,7 @@ class NotificationPage extends StatelessWidget {
         body: Column(
           children: [
             const SizedBox(height: 20),
+            // Tab Bar with original colors
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
               decoration: BoxDecoration(
@@ -61,7 +65,7 @@ class NotificationPage extends StatelessWidget {
                     : Colors.white, // Active label color in light mode
                 unselectedLabelColor: Theme.of(context).brightness == Brightness.dark
                     ? Colors.white70 // Unselected label color in dark mode
-                    : Colors.black, // Unselected label color in light mode
+                    : Colors.black87, // Unselected label color in light mode
                 labelStyle: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -76,6 +80,7 @@ class NotificationPage extends StatelessWidget {
                 ],
               ),
             ),
+            // Tab content
             const Expanded(
               child: TabBarView(
                 children: [
@@ -99,14 +104,14 @@ class MailboxTab extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.all(16.0),
       children: const [
-        Text('Today', style: TextStyle(fontWeight: FontWeight.bold)),
+        Text('Today', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
         SizedBox(height: 8),
         NotificationTile(
           title: 'Self-generating profit up to 4.2%/year',
           description: 'Just 1 touch to turn on the automatic profit feature...',
         ),
         SizedBox(height: 16),
-        Text('Yesterday', style: TextStyle(fontWeight: FontWeight.bold)),
+        Text('Yesterday', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
         SizedBox(height: 8),
         NotificationTile(
           title: 'Automatically generate up to 1.6%',
@@ -117,7 +122,7 @@ class MailboxTab extends StatelessWidget {
           description: 'One touch activates the auto-profit feature...',
         ),
         SizedBox(height: 16),
-        Text('16 May 2024', style: TextStyle(fontWeight: FontWeight.bold)),
+        Text('16 May 2024', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
         SizedBox(height: 8),
         NotificationTile(
           title: 'Self-generating profit up to 20%/year',
@@ -136,7 +141,7 @@ class BalanceFluctuationTab extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.all(16.0),
       children: const [
-        Text('Today', style: TextStyle(fontWeight: FontWeight.bold)),
+        Text('Today', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
         SizedBox(height: 8),
         NotificationTile(
           title: 'Account: Thanh Nhan Pham',
@@ -147,14 +152,14 @@ class BalanceFluctuationTab extends StatelessWidget {
           description: 'Transaction amount: + USD 16.20\nMessage: Contribution to the group f...',
         ),
         SizedBox(height: 16),
-        Text('Yesterday', style: TextStyle(fontWeight: FontWeight.bold)),
+        Text('Yesterday', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
         SizedBox(height: 8),
         NotificationTile(
           title: 'Account: Thanh Nhan Pham',
           description: 'Transaction amount: + USD 300.14\nMessage: Gift for your birthday',
         ),
         SizedBox(height: 16),
-        Text('16 May 2024', style: TextStyle(fontWeight: FontWeight.bold)),
+        Text('16 May 2024', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
         SizedBox(height: 8),
         NotificationTile(
           title: 'Account: Thanh Nhan Pham',
@@ -180,6 +185,8 @@ class NotificationTile extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),
+      shadowColor: Colors.black.withOpacity(0.1),
+      elevation: 5, // Added slight elevation for a modern look
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -189,7 +196,7 @@ class NotificationTile extends StatelessWidget {
               title,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 22,
+                fontSize: 20, // Adjusted font size for better readability
                 color: Theme.of(context).textTheme.bodyLarge?.color,
               ),
             ),
@@ -198,7 +205,7 @@ class NotificationTile extends StatelessWidget {
               description,
               style: TextStyle(
                 color: Theme.of(context).textTheme.bodyMedium?.color,
-                fontSize: 17,
+                fontSize: 16, // Slightly reduced font size for description
               ),
             ),
           ],

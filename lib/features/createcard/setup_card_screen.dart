@@ -1,5 +1,5 @@
-import 'package:eazrdaily/features/createcard/confirm_name_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:eazrdaily/features/createcard/confirm_name_screen.dart';
 
 class SetupCardScreen extends StatefulWidget {
   @override
@@ -30,15 +30,14 @@ class _SetupCardScreenState extends State<SetupCardScreen> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: isDarkMode ? Colors.white : Colors.black),
           onPressed: () {
-            // Implement back action
-            Navigator.pop(context);
+            Navigator.pop(context); // Implement back action
           },
         ),
         centerTitle: true,
         title: Text(
           'Setup Card',
           style: TextStyle(
-            fontSize: 30,
+            fontSize: 28,
             fontWeight: FontWeight.bold,
             color: isDarkMode ? Colors.white : Colors.black,
           ),
@@ -50,36 +49,48 @@ class _SetupCardScreenState extends State<SetupCardScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Select a design \noption for your card:',
+              'Select a design option \nfor your card:',
               style: TextStyle(
-                fontSize: 40,
+                fontSize: 26,
+                fontWeight: FontWeight.w600,
                 color: isDarkMode ? Colors.white : Colors.black,
               ),
             ),
-            SizedBox(height: 50),
+            const SizedBox(height: 40),
             // Display selected design
-            Container(
-              height: 200,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                image: selectedIndex != -1
-                    ? DecorationImage(
-                        image: AssetImage(cardDesigns[selectedIndex]),
-                        fit: BoxFit.cover,
-                      )
-                    : null,
-                border: Border.all(
-                  color: (isDarkMode ? Colors.white : Colors.black),
-                  width: 2,
+            Center(
+              child: Container(
+                height: 200,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  image: selectedIndex != -1
+                      ? DecorationImage(
+                    image: AssetImage(cardDesigns[selectedIndex]),
+                    fit: BoxFit.cover,
+                  )
+                      : null,
+                  border: Border.all(
+                    color: isDarkMode ? Colors.white : Colors.black,
+                    width: 2,
+                  ),
+                  color: selectedIndex == -1
+                      ? (isDarkMode ? Colors.black : Colors.grey[300])
+                      : null,
                 ),
-                color: selectedIndex == -1
-                    ? (isDarkMode ? Colors.black : Colors.grey[300])
-                    : null,
               ),
             ),
-            SizedBox(height: 30),
-            // Add Card List Below Large Container
+            const SizedBox(height: 30),
+            // Card list view for selection
+            Text(
+              'Available Designs:',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: isDarkMode ? Colors.white70 : Colors.black87,
+              ),
+            ),
+            const SizedBox(height: 10),
             SizedBox(
               height: 80, // Set height for the card list view
               child: ListView.builder(
@@ -90,11 +101,10 @@ class _SetupCardScreenState extends State<SetupCardScreen> {
                     onTap: () {
                       setState(() {
                         selectedIndex = index; // Update the selected card
-                        print("Selected card index: $selectedIndex");
                       });
                     },
                     child: Container(
-                      margin: EdgeInsets.only(right: 10), // Spacing between cards
+                      margin: const EdgeInsets.only(right: 10), // Spacing between cards
                       width: 80,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
@@ -114,13 +124,13 @@ class _SetupCardScreenState extends State<SetupCardScreen> {
                 },
               ),
             ),
-            Spacer(),
+            const Spacer(),
             // Next Button
             Padding(
               padding: const EdgeInsets.only(bottom: 16.0),
               child: ElevatedButton(
                 onPressed: () {
-                  // Handle next action
+                  // Navigate to the next screen
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => ConfirmNameScreen()),
@@ -129,12 +139,16 @@ class _SetupCardScreenState extends State<SetupCardScreen> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: isDarkMode ? Colors.white : Colors.black,
                   foregroundColor: isDarkMode ? Colors.black : Colors.white,
-                  minimumSize: Size(double.infinity, 50),
+                  minimumSize: const Size(double.infinity, 50),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
+                  elevation: 5, // Added slight elevation for a polished look
                 ),
-                child: Text('Next'),
+                child: const Text(
+                  'Next',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
               ),
             ),
           ],

@@ -1,6 +1,5 @@
 import 'package:eazrdaily/features/login/create_passcode_screen.dart';
 import 'package:flutter/material.dart';
-
 import '../forget_password/enter_forget_password_screen.dart';
 
 class EnterPasswordScreen extends StatefulWidget {
@@ -13,6 +12,26 @@ class EnterPasswordScreen extends StatefulWidget {
 class _EnterPasswordScreenState extends State<EnterPasswordScreen> {
   final TextEditingController _passwordController = TextEditingController();
   bool _isPasswordVisible = false;
+  bool _isButtonEnabled = false; // Tracks whether the button is enabled
+
+  @override
+  void initState() {
+    super.initState();
+    _passwordController.addListener(_validateInput); // Listen for text changes
+  }
+
+  void _validateInput() {
+    setState(() {
+      // Enable the button only if the password field is not empty
+      _isButtonEnabled = _passwordController.text.isNotEmpty;
+    });
+  }
+
+  @override
+  void dispose() {
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,16 +127,22 @@ class _EnterPasswordScreenState extends State<EnterPasswordScreen> {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {
+                onPressed: _isButtonEnabled
+                    ? () {
                   // Handle next button action
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => CreatePasscodeScreen()),
                   );
-                },
+                }
+                    : null, // Disable button when input is empty
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: isDarkMode ? Colors.white : Colors.black,
-                  foregroundColor: isDarkMode ? Colors.black : Colors.white, // Button color
+                  backgroundColor: _isButtonEnabled
+                      ? (isDarkMode ? Colors.white : Colors.black)
+                      : Colors.grey, // Grey when disabled
+                  foregroundColor: _isButtonEnabled
+                      ? (isDarkMode ? Colors.black : Colors.white)
+                      : Colors.white70, // Adjust text color
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),

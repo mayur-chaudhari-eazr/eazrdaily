@@ -10,6 +10,26 @@ class EnterUsernameScreen extends StatefulWidget {
 
 class _EnterUsernameScreenState extends State<EnterUsernameScreen> {
   final TextEditingController _usernameController = TextEditingController();
+  bool _isButtonEnabled = false; // Tracks whether the button is enabled
+
+  @override
+  void initState() {
+    super.initState();
+    _usernameController.addListener(_validateInput); // Listen for text changes
+  }
+
+  void _validateInput() {
+    setState(() {
+      // Enable the button only if the username field is not empty
+      _isButtonEnabled = _usernameController.text.isNotEmpty;
+    });
+  }
+
+  @override
+  void dispose() {
+    _usernameController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +108,8 @@ class _EnterUsernameScreenState extends State<EnterUsernameScreen> {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {
+                onPressed: _isButtonEnabled
+                    ? () {
                   // Handle next button action
                   Navigator.push(
                     context,
@@ -96,10 +117,15 @@ class _EnterUsernameScreenState extends State<EnterUsernameScreen> {
                       builder: (context) => const EnterPasswordScreen(),
                     ),
                   );
-                },
+                }
+                    : null, // Disable the button when input is empty
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: isDarkMode ? Colors.white : Colors.black,
-                  foregroundColor: isDarkMode ? Colors.black : Colors.white,
+                  backgroundColor: _isButtonEnabled
+                      ? (isDarkMode ? Colors.white : Colors.black)
+                      : Colors.grey, // Grey when disabled
+                  foregroundColor: _isButtonEnabled
+                      ? (isDarkMode ? Colors.black : Colors.white)
+                      : Colors.white70, // Adjust text color
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
