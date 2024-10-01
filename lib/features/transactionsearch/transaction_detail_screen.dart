@@ -28,6 +28,16 @@ class TransactionDetailScreen extends StatelessWidget {
             // Bank logo and title
             Row(
               children: [
+                const SizedBox(width: 50),
+                Text(
+                  'HSBC',
+                  style: TextStyle(
+                    fontSize: screenWidth * 0.07, // Responsive font size
+                    fontWeight: FontWeight.bold,
+                    color: isDarkMode ? Colors.white : Colors.black,
+                  ),
+                ),
+                const SizedBox(width: 20,),
                 CircleAvatar(
                   backgroundColor: isDarkMode ? Colors.white10 : Colors.orange[100],
                   radius: screenHeight * 0.05, // Responsive size
@@ -37,29 +47,7 @@ class TransactionDetailScreen extends StatelessWidget {
                     height: screenHeight * 0.05,
                   ),
                 ),
-                const SizedBox(width: 16),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'HSBC',
-                      style: TextStyle(
-                        fontSize: screenWidth * 0.07, // Responsive font size
-                        fontWeight: FontWeight.bold,
-                        color: isDarkMode ? Colors.white : Colors.black,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      'Housing',
-                      style: TextStyle(
-                        fontSize: screenWidth * 0.045, // Responsive font size
-                        color: isDarkMode ? Colors.white54 : Colors.grey[600],
-                      ),
-                    ),
-                  ],
-                ),
-                const Spacer(),
+                const SizedBox(width: 20,),
                 Container(
                   decoration: BoxDecoration(
                     color: isDarkMode ? Colors.grey[800] : Colors.grey[200],
@@ -103,72 +91,12 @@ class TransactionDetailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 24),
 
-            // Bar Chart Section
+            // Replace Bar Chart Section with Image
             Center(
-              child: Container(
-                padding: const EdgeInsets.all(16),
-                width: screenWidth * 0.9,
-                decoration: BoxDecoration(
-                  color: isDarkMode ? Colors.grey[800] : Colors.grey[200],
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Total spent for six months',
-                          style: TextStyle(
-                            fontSize: screenWidth * 0.045, // Responsive font size
-                            fontWeight: FontWeight.bold,
-                            color: isDarkMode ? Colors.white : Colors.black,
-                          ),
-                        ),
-                        DropdownButton<String>(
-                          value: 'Monthly',
-                          icon: Icon(
-                            Icons.arrow_drop_down,
-                            color: isDarkMode ? Colors.white : Colors.black,
-                          ),
-                          underline: Container(),
-                          items: <String>['Monthly', 'Weekly']
-                              .map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(
-                                value,
-                                style: TextStyle(color: isDarkMode ? Colors.white : Colors.black),
-                              ),
-                            );
-                          }).toList(),
-                          onChanged: (String? newValue) {},
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 12),
-                    Text(
-                      '\$11,779.99',
-                      style: TextStyle(
-                        fontSize: screenWidth * 0.07, // Responsive font size
-                        fontWeight: FontWeight.bold,
-                        color: isDarkMode ? Colors.white : Colors.black,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        _buildBar('Jan', 50, false, isDarkMode, screenWidth),
-                        _buildBar('Feb', 70, false, isDarkMode, screenWidth),
-                        _buildBar('Mar', 100, true, isDarkMode, screenWidth), // Highlighted bar
-                        _buildBar('Apr', 90, false, isDarkMode, screenWidth),
-                        _buildBar('May', 60, false, isDarkMode, screenWidth),
-                        _buildBar('Jun', 80, false, isDarkMode, screenWidth),
-                      ],
-                    ),
-                  ],
-                ),
+              child: Image.asset(
+                'assets/images/Transaction.png', // Replace with the image asset
+                width: screenWidth * 0.9, // Adjust size according to screen width
+                fit: BoxFit.contain, // Make sure the image scales properly
               ),
             ),
             const SizedBox(height: 24),
@@ -186,36 +114,6 @@ class TransactionDetailScreen extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildBar(String month, double height, bool isHighlighted, bool isDarkMode, double screenWidth) {
-    return Column(
-      children: [
-        Text(
-          month,
-          style: TextStyle(fontSize: screenWidth * 0.03, color: isDarkMode ? Colors.white70 : Colors.grey),
-        ),
-        const SizedBox(height: 4),
-        Container(
-          width: 20,
-          height: height,
-          decoration: BoxDecoration(
-            color: isHighlighted
-                ? (isDarkMode ? Colors.black : Colors.black)
-                : (isDarkMode ? Colors.grey[600] : Colors.grey[400]),
-            borderRadius: BorderRadius.circular(4),
-          ),
-          child: isHighlighted
-              ? Center(
-            child: Text(
-              '\$10,125',
-              style: TextStyle(fontSize: screenWidth * 0.02, color: isDarkMode ? Colors.white : Colors.white),
-            ),
-          )
-              : Container(),
-        ),
-      ],
     );
   }
 
