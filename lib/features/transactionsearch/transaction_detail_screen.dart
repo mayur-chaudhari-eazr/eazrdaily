@@ -20,7 +20,7 @@ class TransactionDetailScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: Padding(
+      body: SingleChildScrollView( // Wrap everything in SingleChildScrollView
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,7 +37,7 @@ class TransactionDetailScreen extends StatelessWidget {
                     color: isDarkMode ? Colors.white : Colors.black,
                   ),
                 ),
-                const SizedBox(width: 20,),
+                const SizedBox(width: 20),
                 CircleAvatar(
                   backgroundColor: isDarkMode ? Colors.white10 : Colors.orange[100],
                   radius: screenHeight * 0.05, // Responsive size
@@ -47,7 +47,7 @@ class TransactionDetailScreen extends StatelessWidget {
                     height: screenHeight * 0.05,
                   ),
                 ),
-                const SizedBox(width: 20,),
+                const SizedBox(width: 20),
                 Container(
                   decoration: BoxDecoration(
                     color: isDarkMode ? Colors.grey[800] : Colors.grey[200],
@@ -102,14 +102,15 @@ class TransactionDetailScreen extends StatelessWidget {
             const SizedBox(height: 24),
 
             // List of Options
-            Expanded(
-              child: ListView(
-                children: [
-                  _buildListTile(Icons.repeat, 'Recur payment', isDarkMode, screenWidth),
-                  _buildListTile(Icons.description, 'Send invoice', isDarkMode, screenWidth),
-                  _buildListTile(Icons.report_problem, 'Report a problem', isDarkMode, screenWidth),
-                ],
-              ),
+            // Remove Expanded here to allow scrolling
+            ListView(
+              shrinkWrap: true, // Prevents the ListView from taking up infinite space
+              physics: NeverScrollableScrollPhysics(), // Disable its own scrolling
+              children: [
+                _buildListTile(Icons.repeat, 'Recur payment', isDarkMode, screenWidth),
+                _buildListTile(Icons.description, 'Send invoice', isDarkMode, screenWidth),
+                _buildListTile(Icons.report_problem, 'Report a problem', isDarkMode, screenWidth),
+              ],
             ),
           ],
         ),
