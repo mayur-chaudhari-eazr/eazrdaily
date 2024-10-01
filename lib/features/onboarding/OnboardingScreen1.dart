@@ -145,9 +145,12 @@ class _OnboardingScreen1State extends State<OnboardingScreen1> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Logo Image
-            Image.asset(
-              'assets/images/onlylogo.png', // Replace with your logo path
-              height: screenSize.height * 0.06, // Responsive logo size
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Image.asset(
+                'assets/images/onlylogo.png', // Replace with your logo path
+                height: screenSize.height * 0.06, // Responsive logo size
+              ),
             ),
             const Spacer(),
             // Onboarding Main Image
