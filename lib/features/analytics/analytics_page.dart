@@ -27,7 +27,7 @@ class AnalyticsPage extends StatelessWidget {
           'Transaction Statistics',
           style: TextStyle(
             color: isDarkMode ? Colors.white : Colors.black,
-            fontSize: Window.getFontSize(16), // Reduced font size
+            fontSize: Window.getFontSize(26), // Reduced font size
             fontWeight: FontWeight.bold,
           ),
         ),

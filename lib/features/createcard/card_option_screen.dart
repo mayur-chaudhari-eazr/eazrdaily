@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'card_activation_screen.dart';
+import 'package:eazrdaily/features/createcard/textsize_widget.dart'; // Import the TextSizes class
 
 class CardOptionSelectionScreen extends StatefulWidget {
   @override
-  _CardOptionSelectionScreenState createState() =>
-      _CardOptionSelectionScreenState();
+  _CardOptionSelectionScreenState createState() => _CardOptionSelectionScreenState();
 }
 
 class _CardOptionSelectionScreenState extends State<CardOptionSelectionScreen> {
@@ -30,6 +30,7 @@ class _CardOptionSelectionScreenState extends State<CardOptionSelectionScreen> {
           'Setup Card',
           style: TextStyle(
             color: isDarkMode ? Colors.white : Colors.black,
+            fontSize: TextSizes.large(context), // Use large text size
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -42,7 +43,7 @@ class _CardOptionSelectionScreenState extends State<CardOptionSelectionScreen> {
             Text(
               'Pick your card option',
               style: TextStyle(
-                fontSize: 36,
+                fontSize: TextSizes.extraLarge(context), // Use extra large text size
                 fontWeight: FontWeight.bold,
                 color: isDarkMode ? Colors.white : Colors.black,
               ),
@@ -113,7 +114,7 @@ class _CardOptionSelectionScreenState extends State<CardOptionSelectionScreen> {
                 activeColor: isDarkMode ? Colors.white : Colors.black, // Manage color for dark mode
               ),
             ),
-            const Divider(indent: 60,),
+            const Divider(indent: 60),
             ListTile(
               leading: Image.asset('assets/images/Mastercard.png', width: 30), // Replace with actual MasterCard icon path
               title: Text(
@@ -172,7 +173,13 @@ class _CardOptionSelectionScreenState extends State<CardOptionSelectionScreen> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                child: Text('Next'),
+                child: Text(
+                  'Next',
+                  style: TextStyle(
+                    fontSize: TextSizes.medium(context), // Use medium text size for button
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ),
           ],

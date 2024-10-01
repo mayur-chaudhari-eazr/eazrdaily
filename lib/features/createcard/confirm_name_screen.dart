@@ -1,6 +1,7 @@
 import 'package:eazrdaily/features/createcard/card_activation_screen.dart';
 import 'package:eazrdaily/features/createcard/card_option_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:eazrdaily/features/createcard/textsize_widget.dart'; // Import the TextSizes class
 
 class ConfirmNameScreen extends StatelessWidget {
   final String firstName = "Thanh Nhan"; // Pre-filled first name
@@ -24,7 +25,7 @@ class ConfirmNameScreen extends StatelessWidget {
         title: Text(
           'Setup Card',
           style: TextStyle(
-            fontSize: 30,
+            fontSize: TextSizes.large(context), // Use custom text size
             fontWeight: FontWeight.bold,
             color: isDarkMode ? Colors.white : Colors.black,
           ),
@@ -38,7 +39,7 @@ class ConfirmNameScreen extends StatelessWidget {
             Text(
               'Please confirm \nyour name.',
               style: TextStyle(
-                fontSize: 40,
+                fontSize: TextSizes.extraLarge(context), // Use extra large text size
                 color: isDarkMode ? Colors.white : Colors.black,
               ),
             ),
@@ -50,14 +51,14 @@ class ConfirmNameScreen extends StatelessWidget {
                 Text(
                   'First name',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: TextSizes.medium(context), // Use medium text size
                     color: isDarkMode ? Colors.white70 : Colors.black54,
                   ),
                 ),
                 Text(
                   firstName,
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: TextSizes.medium(context), // Use medium text size
                     fontWeight: FontWeight.bold,
                     color: isDarkMode ? Colors.white : Colors.black,
                   ),
@@ -76,14 +77,14 @@ class ConfirmNameScreen extends StatelessWidget {
                 Text(
                   'Last name',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: TextSizes.medium(context), // Use medium text size
                     color: isDarkMode ? Colors.white70 : Colors.black54,
                   ),
                 ),
                 Text(
                   lastName,
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: TextSizes.medium(context), // Use medium text size
                     fontWeight: FontWeight.bold,
                     color: isDarkMode ? Colors.white : Colors.black,
                   ),
@@ -99,7 +100,7 @@ class ConfirmNameScreen extends StatelessWidget {
             Text(
               'Please use your legal first and last name. This will be helpful for hotel and car bookings abroad.',
               style: TextStyle(
-                fontSize: 12,
+                fontSize: TextSizes.small(context), // Use small text size
                 color: isDarkMode ? Colors.white38 : Colors.black38,
               ),
             ),
@@ -110,7 +111,12 @@ class ConfirmNameScreen extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   // Handle the next button press
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => CardOptionSelectionScreen()),);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CardOptionSelectionScreen(),
+                    ),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: isDarkMode ? Colors.white : Colors.black,
@@ -120,7 +126,13 @@ class ConfirmNameScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                child: Text('Next'),
+                child: Text(
+                  'Next',
+                  style: TextStyle(
+                    fontSize: TextSizes.medium(context), // Use medium text size
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ),
           ],

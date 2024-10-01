@@ -1,3 +1,4 @@
+import 'package:eazrdaily/features/createcard/textsize_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:eazrdaily/features/createcard/confirm_name_screen.dart';
 
@@ -37,7 +38,7 @@ class _SetupCardScreenState extends State<SetupCardScreen> {
         title: Text(
           'Setup Card',
           style: TextStyle(
-            fontSize: 28,
+            fontSize: TextSizes.large(context), // Use large text size for app bar
             fontWeight: FontWeight.bold,
             color: isDarkMode ? Colors.white : Colors.black,
           ),
@@ -51,7 +52,7 @@ class _SetupCardScreenState extends State<SetupCardScreen> {
             Text(
               'Select a design option \nfor your card:',
               style: TextStyle(
-                fontSize: 26,
+                fontSize: TextSizes.large(context), // Use large text size
                 fontWeight: FontWeight.w600,
                 color: isDarkMode ? Colors.white : Colors.black,
               ),
@@ -60,23 +61,36 @@ class _SetupCardScreenState extends State<SetupCardScreen> {
             // Display selected design
             Center(
               child: Container(
-                height: 200,
+                height: 250, // Increased height for a more prominent card
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
-                  image: selectedIndex != -1
-                      ? DecorationImage(
-                    image: AssetImage(cardDesigns[selectedIndex]),
+                  gradient: LinearGradient(
+                    colors: [
+                      isDarkMode ? Colors.blueGrey : Colors.blueAccent,
+                      isDarkMode ? Colors.black : Colors.lightBlue,
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.2),
+                      blurRadius: 10,
+                      offset: Offset(0, 5), // Shadow position
+                    ),
+                  ],
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
+                  child: selectedIndex != -1
+                      ? Image.asset(
+                    cardDesigns[selectedIndex],
                     fit: BoxFit.cover,
                   )
-                      : null,
-                  border: Border.all(
-                    color: isDarkMode ? Colors.white : Colors.black,
-                    width: 2,
+                      : Container(
+                    color: isDarkMode ? Colors.black : Colors.grey[300],
                   ),
-                  color: selectedIndex == -1
-                      ? (isDarkMode ? Colors.black : Colors.grey[300])
-                      : null,
                 ),
               ),
             ),
@@ -85,7 +99,7 @@ class _SetupCardScreenState extends State<SetupCardScreen> {
             Text(
               'Available Designs:',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: TextSizes.medium(context), // Use medium text size
                 fontWeight: FontWeight.bold,
                 color: isDarkMode ? Colors.white70 : Colors.black87,
               ),
@@ -127,7 +141,7 @@ class _SetupCardScreenState extends State<SetupCardScreen> {
             const Spacer(),
             // Next Button
             Padding(
-              padding: const EdgeInsets.only(bottom: 16.0),
+              padding: const EdgeInsets.only(bottom: 8.0),
               child: ElevatedButton(
                 onPressed: () {
                   // Navigate to the next screen
@@ -145,9 +159,9 @@ class _SetupCardScreenState extends State<SetupCardScreen> {
                   ),
                   elevation: 5, // Added slight elevation for a polished look
                 ),
-                child: const Text(
+                child:  Text(
                   'Next',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: TextSizes.medium(context), fontWeight: FontWeight.bold), // Use medium text size for button
                 ),
               ),
             ),

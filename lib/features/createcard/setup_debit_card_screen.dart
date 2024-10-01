@@ -1,4 +1,5 @@
 import 'package:eazrdaily/features/createcard/setup_card_screen.dart';
+import 'package:eazrdaily/features/createcard/textsize_widget.dart';
 import 'package:flutter/material.dart';
 import '../../core/utils/window.dart'; // Import your Window class for responsive design
 
@@ -23,7 +24,7 @@ class SetupDebitCardScreen extends StatelessWidget {
               // Container for card image
               Container(
                 width: double.infinity,
-                height: Window.getVerticalSize(400), // Responsive container height
+                height: Window.getVerticalSize(450), // Increased height for the container
                 decoration: BoxDecoration(
                   color: Colors.yellow, // Container background color
                   borderRadius: BorderRadius.circular(Window.getRadiusSize(20)), // Responsive border radius
@@ -31,7 +32,7 @@ class SetupDebitCardScreen extends StatelessWidget {
                 child: Center(
                   child: Image.asset(
                     'assets/images/new_card_image.png',
-                    height: Window.getVerticalSize(300), // Responsive image height
+                    height: Window.getVerticalSize(350), // Increased height for the image
                     fit: BoxFit.cover, // Ensures the image fills the space without distortion
                   ),
                 ),
@@ -42,7 +43,7 @@ class SetupDebitCardScreen extends StatelessWidget {
               Text(
                 'Setup Debit Card',
                 style: TextStyle(
-                  fontSize: Window.getFontSize(24), // Responsive font size
+                  fontSize: TextSizes.large(context), // Use large text size
                   fontWeight: FontWeight.bold,
                   color: isDarkMode ? Colors.white : Colors.black, // Adjust text color based on theme
                 ),
@@ -54,7 +55,7 @@ class SetupDebitCardScreen extends StatelessWidget {
                 'Timeless and legendary. The classic original. Personalize it with your own custom drawing or stamp.',
                 textAlign: TextAlign.left,
                 style: TextStyle(
-                  fontSize: Window.getFontSize(16), // Responsive font size
+                  fontSize: TextSizes.medium(context), // Use medium text size
                   color: isDarkMode ? Colors.white70 : Colors.black54, // Adjust text color based on theme
                 ),
               ),
@@ -85,12 +86,11 @@ class SetupDebitCardScreen extends StatelessWidget {
                   child: Text(
                     'Next',
                     style: TextStyle(
-                      fontSize: Window.getFontSize(18), // Responsive button text font size
+                      fontSize: TextSizes.medium(context), // Use medium text size for button
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: Window.getVerticalSize(16)), // Responsive bottom padding
             ],
           ),
         ),

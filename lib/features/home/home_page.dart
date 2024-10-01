@@ -125,7 +125,7 @@ class _HomePageState extends State<HomePage> {
                 Text(
                   'Account and Card',
                   style: TextStyle(
-                    fontSize: 24, // Standard font size
+                    fontSize: 26, // Standard font size
                     fontWeight: FontWeight.bold,
                     color: isDarkMode ? Colors.white : Colors.black,
                   ),

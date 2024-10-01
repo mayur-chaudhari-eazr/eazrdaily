@@ -1,5 +1,6 @@
 import 'package:eazrdaily/features/dashboard/presentation/dashboard_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:eazrdaily/features/createcard/textsize_widget.dart'; // Import the TextSizes class
 
 class CardActivationScreen extends StatefulWidget {
   final String cardImage; // The image of the card front
@@ -33,6 +34,7 @@ class _CardActivationScreenState extends State<CardActivationScreen> {
           'Setup Card',
           style: TextStyle(
             color: isDarkMode ? Colors.white : Colors.black,
+            fontSize: TextSizes.large(context), // Use large text size
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -46,7 +48,7 @@ class _CardActivationScreenState extends State<CardActivationScreen> {
             Text(
               'Debit card is now \nactive and ready!',
               style: TextStyle(
-                fontSize: 36,
+                fontSize: TextSizes.extraLarge(context), // Use extra large text size
                 fontWeight: FontWeight.bold,
                 color: isDarkMode ? Colors.white : Colors.black,
               ),
@@ -56,7 +58,7 @@ class _CardActivationScreenState extends State<CardActivationScreen> {
             Text(
               'Tap to flip the card.',
               style: TextStyle(
-                fontSize: 16,
+                fontSize: TextSizes.medium(context), // Use medium text size
                 color: isDarkMode ? Colors.white70 : Colors.black54,
               ),
               textAlign: TextAlign.center,
@@ -121,7 +123,13 @@ class _CardActivationScreenState extends State<CardActivationScreen> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                child: const Text('Finish'),
+                child: Text(
+                  'Finish',
+                  style: TextStyle(
+                    fontSize: TextSizes.medium(context), // Use medium text size for button
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ),
           ],
