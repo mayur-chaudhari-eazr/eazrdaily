@@ -35,10 +35,12 @@ class AccountConfirmationScreen extends StatelessWidget {
             const SizedBox(height: 20),
             Row(
               children: [
-                CircleAvatar(
-                  radius: 30,
-                  backgroundColor: Colors.pink[100],
-                  child: const Icon(Icons.credit_card, color: Colors.pink),
+                // Replace CircleAvatar with Image.asset
+                Image.asset(
+                  'assets/images/icon_2.png', // Your image path
+                  width: 60, // Set the desired width
+                  height: 60, // Set the desired height
+                  fit: BoxFit.cover, // Adjust the fit as needed
                 ),
                 const SizedBox(width: 16),
                 Column(
