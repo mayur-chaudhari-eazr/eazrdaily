@@ -25,29 +25,8 @@ class _ProfilePageState extends State<ProfilePage> {
     final isDarkMode = theme.brightness == Brightness.dark;
 
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: isDarkMode ? Colors.white : Colors.black),
-          onPressed: () {
-            Navigator.of(context).pop(); // Go back to the previous screen
-          },
-        ),
-        title: Text(
-          'My Account',
-          style: theme.textTheme.titleLarge?.copyWith(
-            fontSize: 26, // Larger title font size for prominence
-            fontWeight: FontWeight.bold,
-            color: isDarkMode ? Colors.white : Colors.black, // Change text color based on theme
-          ),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.transparent, // White in light mode, black in dark mode
-        elevation: 0,
-        iconTheme: IconThemeData(
-          color: isDarkMode ? Colors.white : Colors.black, // Change icon color based on theme
-        ),
-      ),
-      backgroundColor: isDarkMode ? Colors.black : Colors.white, // Match the screen color to the app bar color
+      appBar: _buildAppBar(context, isDarkMode),
+      backgroundColor: isDarkMode ? Colors.black : Colors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
@@ -55,34 +34,7 @@ class _ProfilePageState extends State<ProfilePage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 16),
-              Center(
-                child: Column(
-                  children: [
-                    const CircleAvatar(
-                      radius: 60, // Larger avatar size for impact
-                      backgroundImage: NetworkImage(
-                        'https://randomuser.me/api/portraits/men/1.jpg', // Replace with your image URL
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-                    Text(
-                      'Thanh Nhan Pham',
-                      style: theme.textTheme.headlineMedium?.copyWith(
-                        fontSize: 28, // Larger name font size
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      'bredarstudio@ui8.com',
-                      style: theme.textTheme.bodyLarge?.copyWith(
-                        fontSize: 18,
-                        color: theme.colorScheme.onSurfaceVariant,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              _buildProfileHeader(theme),
               const SizedBox(height: 32),
               _buildProfileOption(
                 context,
@@ -95,7 +47,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   );
                 },
               ),
-              const Divider(), // Divider after each option
+              const Divider(),
               _buildProfileOption(
                 context,
                 icon: Icons.visibility_outlined,
@@ -119,8 +71,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 icon: Icons.dark_mode_outlined,
                 title: 'Dark Mode',
                 isDarkMode: isDarkMode,
-                value: Provider.of<AppTheme>(context).themeMode == ThemeMode.dark, // Use provider to check the theme mode
-                onChanged: _toggleDarkMode, // Handle dark mode toggle
+                value: Provider.of<AppTheme>(context).themeMode == ThemeMode.dark,
+                onChanged: _toggleDarkMode,
               ),
               const Divider(),
               _buildCustomLanguageToggle(context),
@@ -133,41 +85,92 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  Widget _buildProfileOption(BuildContext context,
-      {required IconData icon, required String title, required VoidCallback onTap}) {
-    ThemeData theme = Theme.of(context);
+  AppBar _buildAppBar(BuildContext context, bool isDarkMode) {
+    final theme = Theme.of(context);
+    return AppBar(
+      leading: IconButton(
+        icon: Icon(Icons.arrow_back, color: isDarkMode ? Colors.white : Colors.black),
+        onPressed: () {
+          Navigator.of(context).pop(); // Go back to the previous screen
+        },
+      ),
+      title: Text(
+        'My Account',
+        style: theme.textTheme.titleLarge?.copyWith(
+          fontSize: 26,
+          fontWeight: FontWeight.bold,
+          color: isDarkMode ? Colors.white : Colors.black,
+        ),
+      ),
+      centerTitle: true,
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      iconTheme: IconThemeData(
+        color: isDarkMode ? Colors.white : Colors.black,
+      ),
+    );
+  }
+
+  // Profile Header Widget (Avatar, Name, Email)
+  Widget _buildProfileHeader(ThemeData theme) {
+    return Center(
+      child: Column(
+        children: [
+          const CircleAvatar(
+            radius: 60, // Larger avatar size for impact
+            backgroundImage: NetworkImage('https://randomuser.me/api/portraits/men/1.jpg'),
+          ),
+          const SizedBox(height: 24),
+          Text(
+            'Thanh Nhan Pham',
+            style: theme.textTheme.headlineMedium?.copyWith(
+              fontSize: 28, // Larger name font size
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'bredarstudio@ui8.com',
+            style: theme.textTheme.bodyLarge?.copyWith(
+              fontSize: 18,
+              color: theme.colorScheme.onSurfaceVariant,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // Profile Option Widget (Reusable for each profile option)
+  Widget _buildProfileOption(BuildContext context, {required IconData icon, required String title, required VoidCallback onTap}) {
+    final theme = Theme.of(context);
     final isDarkMode = theme.brightness == Brightness.dark;
     return ListTile(
       leading: Icon(
         icon,
         size: 28,
-        color: isDarkMode ? Colors.white : Colors.black, // Adjust icon color based on theme
+        color: isDarkMode ? Colors.white : Colors.black,
       ),
       title: Text(
         title,
         style: theme.textTheme.titleMedium?.copyWith(
-          fontSize: 20, // Larger text size for the options
+          fontSize: 20,
           fontWeight: FontWeight.w500,
         ),
       ),
       trailing: Icon(Icons.arrow_forward_ios, color: isDarkMode ? Colors.white : Colors.black, size: 20),
       onTap: onTap,
-      contentPadding: const EdgeInsets.symmetric(vertical: 12.0), // Add more vertical padding
+      contentPadding: const EdgeInsets.symmetric(vertical: 12.0),
     );
   }
 
-  // Custom switch widget for dark mode
-  Widget _buildCustomSwitchOption(BuildContext context,
-      {required IconData icon,
-        required String title,
-        required bool value,
-        required bool isDarkMode,
-        required ValueChanged<bool> onChanged}) {
+  // Custom Switch for Dark Mode
+  Widget _buildCustomSwitchOption(BuildContext context, {required IconData icon, required String title, required bool value, required bool isDarkMode, required ValueChanged<bool> onChanged}) {
     return ListTile(
       leading: Icon(
         icon,
         size: 28,
-        color: isDarkMode ? Colors.white : Colors.black, // Adjust icon color based on theme
+        color: isDarkMode ? Colors.white : Colors.black,
       ),
       title: Text(
         title,
@@ -178,14 +181,14 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
       trailing: GestureDetector(
         onTap: () {
-          onChanged(!value); // Toggle dark mode on tap
+          onChanged(!value);
         },
         child: Container(
           width: 60,
           height: 30,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: isDarkMode ? Colors.grey[700] : Colors.grey[300], // Background color for toggle
+            color: isDarkMode ? Colors.grey[700] : Colors.grey[300],
           ),
           child: Stack(
             children: [
@@ -197,7 +200,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   width: 30,
                   height: 30,
                   decoration: BoxDecoration(
-                    color: isDarkMode ? Colors.black : Colors.white, // Circle color
+                    color: isDarkMode ? Colors.black : Colors.white,
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Center(
@@ -219,7 +222,7 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  // Custom toggle button for language change
+  // Custom Language Toggle Button (EN/FR)
   Widget _buildCustomLanguageToggle(BuildContext context) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
@@ -227,7 +230,7 @@ class _ProfilePageState extends State<ProfilePage> {
       leading: Icon(
         Icons.language_outlined,
         size: 28,
-        color: isDarkMode ? Colors.white : Colors.black, // Adjust icon color based on theme
+        color: isDarkMode ? Colors.white : Colors.black,
       ),
       title: Text(
         'Language',
@@ -247,7 +250,7 @@ class _ProfilePageState extends State<ProfilePage> {
           height: 30,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: isDarkMode ? Colors.grey[700] : Colors.grey[300], // Background color for toggle
+            color: isDarkMode ? Colors.grey[700] : Colors.grey[300],
           ),
           child: Stack(
             children: [
@@ -259,7 +262,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   width: 30,
                   height: 30,
                   decoration: BoxDecoration(
-                    color: isDarkMode ? Colors.black : Colors.white, // Circle color
+                    color: isDarkMode ? Colors.black : Colors.white,
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Center(

@@ -27,7 +27,7 @@ class AnalyticsPage extends StatelessWidget {
           'Transaction Statistics',
           style: TextStyle(
             color: isDarkMode ? Colors.white : Colors.black,
-            fontSize: Window.getFontSize(20), // Responsive font size
+            fontSize: Window.getFontSize(16), // Reduced font size
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -36,11 +36,11 @@ class AnalyticsPage extends StatelessWidget {
       ),
       backgroundColor: isDarkMode ? Colors.grey[900] : Colors.white,
       body: SingleChildScrollView(
-        padding: Window.getPadding(all: 16), // Responsive padding
+        padding: Window.getPadding(all: 12), // Reduced padding
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 16),
+            const SizedBox(height: 12), // Reduced height
             Center(
               child: Column(
                 children: [
@@ -48,37 +48,37 @@ class AnalyticsPage extends StatelessWidget {
                     TextSpan(
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: Window.getFontSize(48), // Adjust font size
+                        fontSize: Window.getFontSize(36), // Reduced font size from 48
                       ),
                       children: [
                         TextSpan(
                           text: '\$', // Small $ symbol
                           style: TextStyle(
-                            fontSize: Window.getFontSize(30), // Adjust size
+                            fontSize: Window.getFontSize(24), // Reduced font size from 30
                           ),
                         ),
                         const TextSpan(text: '1,368'), // Main large number
                         TextSpan(
                           text: '.00', // Small .00 part
                           style: TextStyle(
-                            fontSize: Window.getFontSize(30), // Adjust size
+                            fontSize: Window.getFontSize(24), // Reduced font size from 30
                           ),
                         ),
                       ],
                     ),
                   ),
-                  SizedBox(height: Window.getVerticalSize(8)),
+                  SizedBox(height: Window.getVerticalSize(6)), // Reduced vertical size
                   Text(
                     "for May 2024",
                     style: TextStyle(
-                      fontSize: Window.getFontSize(20), // Adjust font size
+                      fontSize: Window.getFontSize(16), // Reduced font size from 20
                       color: Colors.grey,
                     ),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: Window.getVerticalSize(24)),
+            SizedBox(height: Window.getVerticalSize(20)), // Reduced vertical size
 
             // Circular charts
             Stack(
@@ -89,14 +89,14 @@ class AnalyticsPage extends StatelessWidget {
                   series: <CircularSeries>[
                     DoughnutSeries<_ChartData, String>(
                       dataSource: [_ChartData('Remaining', 20, Colors.grey[600]!)],
-                      innerRadius: Window.getHorizontalSize(130).toString(), // Responsive inner radius
-                      radius: Window.getHorizontalSize(157).toString(), // Responsive radius
+                      innerRadius: Window.getHorizontalSize(100).toString(), // Reduced inner radius
+                      radius: Window.getHorizontalSize(130).toString(), // Reduced radius
                       startAngle: 270,
                       endAngle: 630,
                       pointColorMapper: (_ChartData data, _) => data.color,
                       xValueMapper: (_ChartData data, _) => data.category,
                       yValueMapper: (_ChartData data, _) => data.value,
-                      strokeWidth: 2, // Adjust stroke width
+                      strokeWidth: 2,
                     ),
                   ],
                 ),
@@ -105,8 +105,8 @@ class AnalyticsPage extends StatelessWidget {
                   series: <CircularSeries>[
                     DoughnutSeries<_ChartData, String>(
                       dataSource: [_ChartData('POS', 20, Colors.blue)],
-                      innerRadius: Window.getHorizontalSize(120).toString(),
-                      radius: Window.getHorizontalSize(160).toString(),
+                      innerRadius: Window.getHorizontalSize(90).toString(),
+                      radius: Window.getHorizontalSize(140).toString(),
                       startAngle: 400,
                       endAngle: 570,
                       pointColorMapper: (_ChartData data, _) => data.color,
@@ -122,8 +122,8 @@ class AnalyticsPage extends StatelessWidget {
                   series: <CircularSeries>[
                     DoughnutSeries<_ChartData, String>(
                       dataSource: [_ChartData('Transfer', 60, Colors.yellow)],
-                      innerRadius: Window.getHorizontalSize(110).toString(),
-                      radius: Window.getHorizontalSize(160).toString(),
+                      innerRadius: Window.getHorizontalSize(80).toString(),
+                      radius: Window.getHorizontalSize(140).toString(),
                       startAngle: 270,
                       endAngle: 486,
                       pointColorMapper: (_ChartData data, _) => data.color,
@@ -137,15 +137,15 @@ class AnalyticsPage extends StatelessWidget {
                 // Center text container
                 Positioned(
                   child: Container(
-                    padding: Window.getPadding(all: 12),
+                    padding: Window.getPadding(all: 10), // Reduced padding
                     decoration: BoxDecoration(
                       color: isDarkMode ? Colors.grey[100] : Colors.grey[800],
-                      borderRadius: BorderRadius.circular(Window.getRadiusSize(12)),
+                      borderRadius: BorderRadius.circular(Window.getRadiusSize(10)), // Reduced radius
                       boxShadow: [
                         BoxShadow(
                           color: isDarkMode ? Colors.black26 : Colors.grey.withOpacity(0.3),
-                          blurRadius: Window.getHorizontalSize(10),
-                          spreadRadius: Window.getHorizontalSize(5),
+                          blurRadius: Window.getHorizontalSize(8), // Reduced blur
+                          spreadRadius: Window.getHorizontalSize(4), // Reduced spread
                           offset: const Offset(0, 4),
                         ),
                       ],
@@ -154,7 +154,7 @@ class AnalyticsPage extends StatelessWidget {
                       "\$10,125",
                       style: TextStyle(
                         color: isDarkMode ? Colors.black : Colors.white,
-                        fontSize: Window.getFontSize(30), // Adjust font size
+                        fontSize: Window.getFontSize(24), // Reduced font size
                       ),
                     ),
                   ),
@@ -163,22 +163,22 @@ class AnalyticsPage extends StatelessWidget {
             ),
 
             // Legends
-            SizedBox(height: Window.getVerticalSize(32)),
+            SizedBox(height: Window.getVerticalSize(24)), // Reduced vertical size
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 _buildLegend('POS', Colors.blue),
-                SizedBox(width: Window.getHorizontalSize(16)),
+                SizedBox(width: Window.getHorizontalSize(12)), // Reduced spacing
                 _buildLegend('Transfer', Colors.yellow),
               ],
             ),
 
             // Transaction details section
-            SizedBox(height: Window.getVerticalSize(40)),
+            SizedBox(height: Window.getVerticalSize(30)), // Reduced vertical size
             _buildTransactionItemWithImage(context, 'Transfer', '+1,230.00', 'POS', '*4243', 'assets/images/Avatar.png', isDarkMode),
             const Divider(), // Ensure Divider is visible
             _buildTransactionItemWithImage(context, 'Coffee world', '-32.26', 'Recreation & Entertainment', '', 'assets/images/iconbutton.png', isDarkMode),
-            SizedBox(height: 100,)
+            const SizedBox(height: 80), // Reduced extra spacing
           ],
         ),
       ),
@@ -190,15 +190,15 @@ class AnalyticsPage extends StatelessWidget {
     return Row(
       children: [
         Container(
-          width: Window.getHorizontalSize(50),
-          height: Window.getVerticalSize(30),
+          width: Window.getHorizontalSize(40), // Reduced width
+          height: Window.getVerticalSize(20), // Reduced height
           decoration: BoxDecoration(
             shape: BoxShape.rectangle,
             color: color,
           ),
         ),
-        SizedBox(width: Window.getHorizontalSize(12)),
-        Text(text, style: TextStyle(fontSize: Window.getFontSize(20))), // Adjust font size
+        SizedBox(width: Window.getHorizontalSize(10)), // Reduced spacing
+        Text(text, style: TextStyle(fontSize: Window.getFontSize(16))), // Reduced font size
       ],
     );
   }
@@ -206,11 +206,10 @@ class AnalyticsPage extends StatelessWidget {
   // Transaction items with images
   Widget _buildTransactionItemWithImage(BuildContext context, String title, String amount, String subTitle,
       [String? extraInfo, String imagePath = '', bool isDarkMode = false]) {
-    // Determine the appropriate vertical spacing based on screen height
     final screenHeight = MediaQuery.of(context).size.height;
     final double dynamicSpacing = screenHeight < 600
-        ? Window.getVerticalSize(40) // Smaller devices get smaller spacing
-        : Window.getVerticalSize(60); // Larger devices get more spacing
+        ? Window.getVerticalSize(32) // Adjusted for smaller devices
+        : Window.getVerticalSize(48); // Adjusted for larger devices
 
     return Column(
       children: [
@@ -221,18 +220,18 @@ class AnalyticsPage extends StatelessWidget {
               children: [
                 Image.asset(
                   imagePath,
-                  height: Window.getVerticalSize(40), // Responsive size
-                  width: Window.getHorizontalSize(40), // Responsive size
+                  height: Window.getVerticalSize(32), // Reduced image size
+                  width: Window.getHorizontalSize(32), // Reduced image size
                   fit: BoxFit.cover,
                 ),
-                SizedBox(width: Window.getHorizontalSize(12)),
+                SizedBox(width: Window.getHorizontalSize(10)), // Reduced spacing
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       title,
                       style: TextStyle(
-                        fontSize: Window.getFontSize(20), // Responsive font size
+                        fontSize: Window.getFontSize(16), // Reduced font size
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -240,7 +239,7 @@ class AnalyticsPage extends StatelessWidget {
                       subTitle,
                       style: TextStyle(
                         color: Colors.grey,
-                        fontSize: Window.getFontSize(16), // Responsive font size
+                        fontSize: Window.getFontSize(14), // Reduced font size
                       ),
                     ),
                   ],
@@ -250,7 +249,7 @@ class AnalyticsPage extends StatelessWidget {
             Text(
               amount,
               style: TextStyle(
-                fontSize: Window.getFontSize(20), // Responsive font size
+                fontSize: Window.getFontSize(16), // Reduced font size
                 color: isDarkMode ? Colors.white : Colors.black,
                 fontWeight: FontWeight.bold,
               ),
